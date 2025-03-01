@@ -18,7 +18,7 @@ High-resolution (HR) image perception remains a key challenge in multimodal larg
 
 ## 🧑🏻‍💻 Code
 
-Coming Soon.
+*Coming Soon.*
 
 
 
