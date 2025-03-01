@@ -1,4 +1,4 @@
-# *Retrieval-Augmented Perception* <img src="assets/logo-Photoroom.png" style="vertical-align: -10px;" :height="60px" width="60px">
+# <img src="assets/logo-Photoroom.png" style="vertical-align: -10px;" :height="60px" width="60px"> *Retrieval-Augmented Perception*
 
 This repo contains the official code for the paper "***Retrieval-Augmented Perception: High-Resolution Image Perception Meets Visual RAG***".
 
