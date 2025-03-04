@@ -1,14 +1,13 @@
 # <img src="assets/logo-Photoroom.png" style="vertical-align: -10px;" :height="60px" width="60px"> *Retrieval-Augmented Perception*
 
-This repo contains the official code for the paper "***Retrieval-Augmented Perception: High-Resolution Image Perception Meets Visual RAG***".
-
-
+This repo contains the official code for the paper ["***Retrieval-Augmented Perception: High-Resolution Image Perception Meets Visual RAG***"](https://arxiv.org/abs/2503.01222).
 
 ## 💡 Highlights
 
 - 🔥 We propose ***RAP***, a training-free framework designed to enhance Multimodal Large Language Models' (MLLMs) ability to process high-resolution images effectively.
 
-
+## 📜 News
+**[2025.03.04]**  🚀 We released the [ArXiv paper](https://arxiv.org/abs/2503.01222).
 
 ## 👀 Introduction
 
@@ -25,6 +24,17 @@ High-resolution (HR) image perception remains a key challenge in multimodal larg
 ## 📧 Contact
 - Wenbin Wang: wangwenbin97@whu.edu.cn 
 
+## ✒️ Citation
+If you use *RAP* in your research, please cite our work:
+```
+@article{rap,
+      title={Retrieval-Augmented Perception: High-Resolution Image Perception Meets Visual RAG}, 
+      author={Wenbin Wang and Yongcheng Jing and Liang Ding and Yingjie Wang and Li Shen and Yong Luo and Bo Du and Dacheng Tao},
+      year={2025},
+      journal={arXiv preprint},
+      url={https://arxiv.org/abs/2503.01222}, 
+}
+```
 
 
 ## Acknowledgement
