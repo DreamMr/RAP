@@ -50,8 +50,8 @@ def encode(text_or_image_list, tokenizer, rag_model):
 
 def split_image(image, crop_size):
     width, height = image.size    
-    rest_w = width % crop_size
-    rest_h = height % crop_size
+    rest_w = crop_size - width % crop_size if width % crop_size > 0 else 0
+    rest_h = crop_size - height % crop_size if height % crop_size > 0 else 0
     new_width = width + rest_w
     new_height = height + rest_h
     
@@ -73,26 +73,24 @@ def split_image(image, crop_size):
     return image_list, rows, cols
 
 def compress_matrix_with_indices(matrix):
-    rows_to_keep = [i for i, row in enumerate(matrix) if any(cell == 1 for cell in row)]
+    rows_to_keep = [i for i, row in enumerate(matrix) if any(cell > 0 for cell in row)]
     
     if matrix is not None and matrix.sum() > 0:
         num_cols = len(matrix[0])
-        cols_to_keep = [j for j in range(num_cols) if any(matrix[i][j] == 1 for i in range(len(matrix)))]
+        cols_to_keep = [j for j in range(num_cols) if any(matrix[i][j] > 0 for i in range(len(matrix)))]
     else:
         cols_to_keep = []
     
     compressed_matrix = []
-    index_mapping = {}
 
     for compressed_row_idx, original_row_idx in enumerate(rows_to_keep):
         compressed_row = []
         for compressed_col_idx, original_col_idx in enumerate(cols_to_keep):
             value = matrix[original_row_idx][original_col_idx]
             compressed_row.append(value.item())
-            index_mapping[(compressed_row_idx, compressed_col_idx)] = (original_row_idx, original_col_idx)
         compressed_matrix.append(compressed_row)
     
-    return torch.tensor(compressed_matrix), index_mapping
+    return torch.tensor(compressed_matrix)
 
 class TreeNode:
     def __init__(self, answer_score=-1, retrieval_score=-1, depth=1, confidence=-1., image=None, parent=None, select_idx=None):
@@ -143,59 +141,29 @@ class BaseModel:
                 self.mapping = load(mapping_image_dataset)
                 print("load mapping: {}".format(mapping_image_dataset))
         
-    def _erosion(self, image, query, k_list, chunk_size):
-        image_patch_list, rows, cols = split_image(image, chunk_size)
-        def filter_zeros(image_patch_list):
-            filtered_mapping_indices = {}
-            filtered_image_patch_list = []
-            for idx, image in enumerate(image_patch_list):
-                img_array = np.array(image)
-                is_all_zero = np.all(img_array == 0)
-                if not is_all_zero:
-                    filtered_image_patch_list.append(image)
-                    filtered_mapping_indices[len(filtered_image_patch_list) - 1] = idx
-            return filtered_mapping_indices, filtered_image_patch_list
-        
-        filtered_mapping_indices, filtered_image_patch_list = filter_zeros(image_patch_list)
-        
-        INSTRUCTION = "Represent this query for retrieving relevant documents: "
-        encoding_time = time.time()
-        embedding_query = encode([INSTRUCTION + query], self.rag_tokenizer, self.rag_model)
-        embedding_doc = encode(filtered_image_patch_list, self.rag_tokenizer, self.rag_model)
-        print("Encoding cost time: {} secs".format(time.time() - encoding_time))
+    def _erosion(self, image_matrix, retrieval_score, k_list, chunk_size):
+        # 
+        rows, cols = image_matrix.shape
+        non_zero_patch_num = (image_matrix > 0).sum()
+        flatten_image_matrix = torch.flatten(image_matrix).int()
+        scores = retrieval_score[flatten_image_matrix]
         original_matrix = torch.zeros((rows,cols),dtype=torch.int)
-        scores = torch.tensor((embedding_query @ embedding_doc.T)).squeeze()
         new_image_list = []
         for k in k_list:
-            select_k = int(k * len(filtered_image_patch_list))
+            select_k = int(k * non_zero_patch_num)
             topk_values, topk_indices = torch.topk(scores, max(1,select_k), dim=0, largest=True, sorted=False)
-            selected_image_list = {}
-            for idx in topk_indices:
-                original_idx = filtered_mapping_indices[idx.item()]
-                selected_image_list[original_idx] = image_patch_list[original_idx]
             for selected_idx in topk_indices:
-                original_idx = filtered_mapping_indices[selected_idx.item()]
-                row_idx = original_idx // cols
-                col_idx = original_idx % cols
-                original_matrix[row_idx][col_idx] = 1
+                #original_idx = filtered_mapping_indices[selected_idx.item()]
+                row_idx = selected_idx // cols
+                col_idx = selected_idx % cols
+                original_matrix[row_idx][col_idx] = flatten_image_matrix[selected_idx]
             try:
-                compressed_matrix_time = time.time()
-                compressed_matrix, index_mapping = compress_matrix_with_indices(original_matrix)
-                print("Compressed matrix time: {} secs".format(time.time() - compressed_matrix_time))
-                compressed_width, compressed_height = compressed_matrix.shape
+                compressed_matrix = compress_matrix_with_indices(original_matrix)
             except Exception as e:
                 print(e)
                 print(compressed_matrix.shape)
                 print(original_matrix.shape)
-            new_image = Image.new('RGB', (compressed_height * chunk_size, compressed_width * chunk_size))
-            for compressed_idx, original_idx in index_mapping.items():
-                idx = original_idx[0] * cols + original_idx[1]
-                if idx in selected_image_list:
-                    selected_image = selected_image_list[idx]
-                    x = compressed_idx[0] * self.rag_image_size
-                    y = compressed_idx[1] * self.rag_image_size
-                    new_image.paste(selected_image, (y,x))
-            new_image_list.append(new_image)
+            new_image_list.append(compressed_matrix)
         return new_image_list
 
     def use_custom_prompt(self, dataset):
@@ -283,7 +251,29 @@ class BaseModel:
             return inputs
         else:
             return None
-
+        
+    def create_image_memory(self, image, chunk_size):
+        image_patch_list, rows, cols = split_image(image, chunk_size)
+        
+        image_matrix = torch.zeros(rows, cols,dtype=torch.int)
+        for idx in range(len(image_patch_list)):
+            image_matrix[idx // cols][idx % cols] = idx + 1
+            
+        image_patch_list = [Image.new('RGB',(chunk_size, chunk_size))] + image_patch_list
+        embedding_image = encode(image_patch_list, self.rag_tokenizer, self.rag_model)
+        
+        return embedding_image, image_matrix, image_patch_list
+    
+    def map2image(self, image_matrix, image_patch_list, chunk_size):
+        rows, cols = image_matrix.shape
+        new_image = Image.new('RGB', (cols * chunk_size, rows * chunk_size))
+        for i in range(rows):
+            for j in range(cols):
+                x = i * chunk_size
+                y = j * chunk_size
+                new_image.paste(image_patch_list[int(image_matrix[i][j])], (y,x))
+        return new_image
+        
     def generate(self, message, dataset=None, no_rag=False):
         """Generate the output message.
 
@@ -357,16 +347,16 @@ class BaseModel:
             warnings.warn('Model does not support video input.')
             sys.exit(-1)
             
-    def _retrieval_confidence(self, image_list, query):
-        INSTRUCTION = "Represent this query for retrieving relevant documents: "
-        embedding_query = encode([INSTRUCTION + query], self.rag_tokenizer, self.rag_model)
-        #print("Cost encoding query time: {}".format(time.time() - encoding_query_time))
-        encoding_image_time = time.time()
-        embedding_doc = encode(image_list, self.rag_tokenizer, self.rag_model)
-        scores = torch.tensor((embedding_query @ embedding_doc.T)).squeeze()
-        return scores
+    def _retrieval_confidence(self, image_matrix_list, retrieval_score):
+        res_retrieval_score_list = []
+        for image_matrix in image_matrix_list:
+            image_matrix_flatten = torch.flatten(image_matrix)
+            cur_retrieval_score = retrieval_score[image_matrix_flatten].mean()
+            res_retrieval_score_list.append(cur_retrieval_score)
+        return res_retrieval_score_list
     
-    def _answer_confidence(self, query, image):
+    def _answer_confidence(self, query, image_matrix, image_patch_list, chunk_size):
+        image = self.map2image(image_matrix, image_patch_list, chunk_size)
         prompt = ANSWER_PROMPT.format(query)
         answer_value = self.get_confidence_value(prompt, image)
         return answer_value
@@ -394,37 +384,42 @@ class BaseModel:
                 image_path = mess['value']
             elif mess['type'] == 'type':
                 category = mess['value']
-        question = query.split('Options:\n')[0].strip()
         image = Image.open(image_path).convert("RGB")
         new_image = image
         width, height = image.size
         if "llava-onevision" in self.model_path:
-            self.rag_image_size = 224 # hrbench
-            #self.rag_image_size = 112 # vstar ov 0.5b
-            #self.rag_image_size = 224 # vstar ov 7b
+            self.rag_image_size = 448 # hrbench
         else:
             if max(width,height) > 5096:
-                self.rag_image_size = 224
+                self.rag_image_size = 336
             else:
                 self.rag_image_size = 224 # default 224
         
+        # Create Image Memory
+        embedding_image, image_matrix, image_patch_list = self.create_image_memory(image, self.rag_image_size)
+        # Calculate Retrieval Score
+        INSTRUCTION = "Represent this query for retrieving relevant documents: "
+        embedding_query = encode([INSTRUCTION + query], self.rag_tokenizer, self.rag_model)
+        retrieval_score = torch.tensor((embedding_query @ embedding_image.T)).squeeze() # observe the first image patch
+        retrieval_score = 1 + retrieval_score
+        retrieval_score[0] = 0.
         # Search
-        answer_value = self._answer_confidence(query, image)
-        retrieval_value = self._retrieval_confidence([image], query)
+        answer_value = self._answer_confidence(query, image_matrix, image_patch_list, self.rag_image_size)
+        retrieval_value = self._retrieval_confidence([image_matrix], retrieval_score)[0]
         confidence = answer_value
-        root_node = TreeNode(image=image, confidence=confidence, depth=1,answer_score=answer_value, retrieval_score=retrieval_value)
-        optimal_value = {'confidence': answer_value, 'image': image, 'answer_score': answer_value}
+        root_node = TreeNode(image=image_matrix, confidence=confidence, depth=1, answer_score=answer_value, retrieval_score=retrieval_value)
+        optimal_value = {'confidence': answer_value, 'image': image_matrix, 'answer_score': answer_value}
         open_set = [root_node]
         k_list = [0.25, 0.5, 0.75]
         num_pop = 0
         threshold_descrease = [0.1, 0.1, 0.2]
         temp_threshold_descrease = deepcopy(threshold_descrease)
-        answering_confidence_threshold_upper = 0.6
+        answering_confidence_threshold_upper = 1.3
         pop_num_limit = math.log((width * height) // (self.rag_image_size * self.rag_image_size), 4)
-        pop_num_limit = int(pop_num_limit * 5) # 4k 5 8k 10
-        num_interval =5 # 4k 10 8k 50
+        pop_num_limit = int(pop_num_limit * 5)
+        num_interval =5
         visit_leaf = False
-        max_step = self.max_step # 4k 100 8k 200 2k 30
+        max_step = self.max_step
         while len(open_set) > 0 and max_step > 0:
             start_time = time.time()
             f_value = [open_set[i].confidence for i in range(len(open_set))]
@@ -444,31 +439,28 @@ class BaseModel:
                     _ = temp_threshold_descrease.pop(0)
                 pop_num_limit += num_interval
             
-            width, height = cur_node.image.size
+            width, height = cur_node.image.shape
+            width = width * self.rag_image_size
+            height = height * self.rag_image_size
             if max(width, height) <= self.rag_image_size:
                 visit_leaf = True
                 continue
             
             expanded_nodes = []
             sub_image_list = []
-            erosion_time = time.time()
-            sub_image_list = self._erosion(cur_node.image, query, k_list, self.rag_image_size)
-            print("Erosion time: {} sec".format(time.time() - erosion_time))
-            retrieval_score_time = time.time()
-            retrieval_score_list = self._retrieval_confidence(sub_image_list, query)
-            print("Retrieval_score time: {} secs".format(time.time() - retrieval_score_time))
+            sub_image_list = self._erosion(cur_node.image, retrieval_score, k_list, self.rag_image_size)
+            retrieval_score_list = self._retrieval_confidence(sub_image_list, retrieval_score)
             assert len(retrieval_score_list) == len(sub_image_list)
             for idx in range(len(sub_image_list)):
-                confidence_time = time.time()
-                answer_score = self._answer_confidence(query, sub_image_list[idx])
-                print("Confidence time: {} secs".format(time.time() - confidence_time))
-                retrieval_score = retrieval_score_list[idx].item()
+                answer_score = self._answer_confidence(query, sub_image_list[idx], image_patch_list, self.rag_image_size)
+                cur_retrieval_score = retrieval_score_list[idx].item()
                 w = get_confidence_weight(cur_node.depth, self.bias_value)
-                confidence = (1.-w) * retrieval_score + w * answer_score
-                new_node = TreeNode(depth=cur_node.depth+1, confidence=confidence, image=sub_image_list[idx], answer_score=answer_score, retrieval_score=retrieval_score, parent=cur_node, select_idx=idx)
+                confidence = (1.-w) * cur_retrieval_score + w * answer_score
+                new_node = TreeNode(depth=cur_node.depth+1, confidence=confidence, image=sub_image_list[idx], answer_score=answer_score, retrieval_score=cur_retrieval_score, parent=cur_node, select_idx=idx)
                 if self.debug:
                     image_name = f'debug_image/{cur_node.depth+1}_{confidence}.png'
-                    sub_image_list[idx].save(image_name)
+                    cur_sub_image = self.map2image(sub_image_list[idx],image_patch_list, self.rag_image_size)
+                    cur_sub_image.save(image_name)
                     new_node.path_name = image_name
                 
                 expanded_nodes.append(new_node)
@@ -481,6 +473,7 @@ class BaseModel:
             open_set = open_set + expanded_nodes
         
         new_image = optimal_value['image']
+        new_image = self.map2image(new_image, image_patch_list, self.rag_image_size)
         if self.debug:
             new_image.save('./tmp.png')
         for mess in message:

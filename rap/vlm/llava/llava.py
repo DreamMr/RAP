@@ -70,8 +70,6 @@ class LLaVA(BaseModel):
         self.init_index_yes_no()
 
     def init_index_yes_no(self):
-        print("Yes:",self.tokenizer("Yes").input_ids)
-        print("No:",self.tokenizer("No").input_ids)
         if len(self.tokenizer("Yes").input_ids) == 1 and len(self.tokenizer("No").input_ids) == 1: 
             self.index_yes = self.tokenizer("Yes").input_ids[0]
             self.index_no = self.tokenizer("No").input_ids[0]
@@ -79,8 +77,6 @@ class LLaVA(BaseModel):
             assert len(self.tokenizer("Yes").input_ids) == 2 and len(self.tokenizer("No").input_ids) == 2
             self.index_yes = self.tokenizer("Yes").input_ids[1]
             self.index_no = self.tokenizer("No").input_ids[1]
-        print("index_yes:", self.index_yes)
-        print("index_no:", self.index_no)
     
     def use_custom_prompt(self, dataset):
         assert dataset is not None
@@ -104,8 +100,6 @@ class LLaVA(BaseModel):
         prompt = self.system_prompt + 'USER: ' + content + ' ASSISTANT: '
         
         input_ids = tokenizer_image_token(prompt, self.tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).cuda(self.device)
-        # print("input_ids cuda: {}".format(input_ids.device))
-        # print("Model device: {}".format(self.model.device))
         outputs = self.model(
             input_ids,
             images=image_tensor,
@@ -117,7 +111,7 @@ class LLaVA(BaseModel):
     def _cal_confidence(self, outputs):
         logits_yesno = outputs.logits[0, -1, [self.index_yes, self.index_no]]
         confidence = torch.softmax(logits_yesno, dim=-1)[0] 
-        confidence = 2 * (confidence.item() - 0.5) # [-1, 1]
+        confidence = 2 * (confidence.item()) # [0, 2] align with retrieval score
         return confidence
     
 
@@ -258,8 +252,6 @@ class LLaVA_OneVision(BaseModel):
         self.init_index_yes_no()
         
     def init_index_yes_no(self):
-        print("Yes:",self.tokenizer("Yes").input_ids)
-        print("No:",self.tokenizer("No").input_ids)
         if len(self.tokenizer("Yes").input_ids) == 1 and len(self.tokenizer("No").input_ids) == 1: 
             self.index_yes = self.tokenizer("Yes").input_ids[0]
             self.index_no = self.tokenizer("No").input_ids[0]
@@ -267,8 +259,6 @@ class LLaVA_OneVision(BaseModel):
             assert len(self.tokenizer("Yes").input_ids) == 2 and len(self.tokenizer("No").input_ids) == 2
             self.index_yes = self.tokenizer("Yes").input_ids[1]
             self.index_no = self.tokenizer("No").input_ids[1]
-        print("index_yes:", self.index_yes)
-        print("index_no:", self.index_no)
         
     @torch.no_grad()
     def get_confidence_value(self, content, image_list: Image.Image):
@@ -315,7 +305,6 @@ class LLaVA_OneVision(BaseModel):
                     img = msg['value']
                 images.append(img)
                 image_sizes.append(img.size)  # Store the size of each image
-                #content += (self.DEFAULT_IMAGE_TOKEN + '\n')
                 content = self.DEFAULT_IMAGE_TOKEN + '\n' + content
 
         # Process images using the class attribute self.process_images

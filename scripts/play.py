@@ -5,15 +5,15 @@ import time
 from PIL import Image
 import time
 
-model = supported_VLM['llava_v1.5_7b'](max_new_tokens=1024,debug=False,is_process_image=False,processed_image_path=r'/mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/debug_image',max_step=1, rag_model_path=r'/mnt/data/users/wenbinwang/huggingface/VisRAG-Ret')
-image_path = r'/mnt/data/users/wenbinwang/datasets/LVLM_Benchmark/LMUData/images/hr_bench_8k/9.jpg'
+model = supported_VLM['llava_v1.5_7b'](max_new_tokens=1024,debug=True,is_process_image=False,processed_image_path=r'/mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/debug_image',max_step=20, rag_model_path=r'/mnt/data/users/wenbinwang/huggingface/VisRAG-Ret')
+image_path = r'/mnt/data/users/wenbinwang/datasets/LVLM_Benchmark/LMUData/images/hr_bench_8k/60.jpg'
 while True:
     try:
-        cur_input = """Is the mailbox on the left or right side of the woman?
-A. In front
-B. Right
-C. Directly above
-D. Left
+        cur_input = """What is the color of the umbrella?
+A. Blue
+B. Black
+C. Green
+D. Red
 Answer the option letter directly."""
 #         cur_input = """What is the title of the framed poster visible in the image?
         

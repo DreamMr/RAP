@@ -104,7 +104,7 @@ def infer_data(model_name, work_dir, dataset, out_file, verbose=False, api_nproc
     else:
         model.set_dump_image(dataset.dump_image)
 
-    workers = 5
+    workers = 10
     for i in tqdm(range(0,lt, workers)):
         
         batch_data_list = []

@@ -38,7 +38,7 @@ def parse_args():
     parser.add_argument('--no_rag', action='store_true')
     parser.add_argument('--is_process_image', action='store_true')
     parser.add_argument('--processed_image_path', type=str, default=None)
-    parser.add_argument('--max_step', type=int, default=200)
+    parser.add_argument('--max_step', type=int, default=50)
     parser.add_argument('--bias_value', type=float, default=0.2)
     args = parser.parse_args()
     return args
@@ -97,37 +97,16 @@ def main():
                 model = supported_VLM[model_name](model_path=args.model_path, is_process_image=args.is_process_image, processed_image_path=args.processed_image_path, max_step=args.max_step, bias_value=args.bias_value, rag_model_path=args.rag_model_path)
 
             # Perform the Inference
-            if dataset.MODALITY == 'VIDEO':
-                model = infer_data_job_video(
-                    model,
-                    work_dir=pred_root,
-                    model_name=model_name,
-                    dataset=dataset,
-                    nframe=args.nframe,
-                    pack=args.pack,
-                    verbose=args.verbose,
-                    subtitle=args.use_subtitle,
-                    api_nproc=args.nproc)
-            elif dataset.TYPE == 'MT':
-                model = infer_data_job_mt(
-                    model,
-                    work_dir=pred_root,
-                    model_name=model_name,
-                    dataset=dataset,
-                    verbose=args.verbose,
-                    api_nproc=args.nproc,
-                    ignore_failed=args.ignore)
-            else:
-                model = infer_data_job(
-                    model,
-                    work_dir=pred_root,
-                    model_name=model_name,
-                    dataset=dataset,
-                    verbose=args.verbose,
-                    api_nproc=args.nproc,
-                    ignore_failed=args.ignore,
-                    no_rag=args.no_rag
-                    )
+            model = infer_data_job(
+                model,
+                work_dir=pred_root,
+                model_name=model_name,
+                dataset=dataset,
+                verbose=args.verbose,
+                api_nproc=args.nproc,
+                ignore_failed=args.ignore,
+                no_rag=args.no_rag
+                )
 
             # Set the judge kwargs first before evaluation or dumping
             judge_kwargs = {

@@ -1,0 +1,39 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "debug_eval",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--data", "MMBench_DEV_EN_V11",
+                "--model", "qwen_chat",
+                "--judge", "chatgpt-0125",
+                "--model_path", "/mnt/data/users/zhangyuqi/huggingface/vlm_models/Qwen-VL-Chat",
+                "--no_rag"
+            ],
+            "env": {
+                "LMUData": "/mnt/data/users/wenbinwang/datasets/LVLM_Benchmark/LMUData",
+                "OPENAI_API_KEY": "sk-testmyllm",
+                "OPENAI_API_BASE": "http://0.0.0.0:23335/v1/chat/completions"
+            }
+        },
+        {
+            "name": "Python 调试程序: 当前文件",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "1"
+            }
+        }
+    ]
+}

@@ -1,0 +1,1443 @@
+2025-02-22 11:26:40,087 - lmdeploy - [37mINFO[0m - async_engine.py:142 - input backend=turbomind, backend_config=TurbomindEngineConfig(dtype='auto', model_format=None, tp=4, session_len=None, max_batch_size=256, cache_max_entry_count=0.1, cache_chunk_size=-1, cache_block_seq_len=64, enable_prefix_caching=False, quant_policy=0, rope_scaling_factor=0.0, use_logn_attn=False, download_dir=None, revision=None, max_prefill_token_num=8192, num_tokens_per_iter=0, max_prefill_iters=1)
+2025-02-22 11:26:40,088 - lmdeploy - [37mINFO[0m - async_engine.py:144 - input chat_template_config=None
+2025-02-22 11:26:40,116 - lmdeploy - [37mINFO[0m - async_engine.py:154 - updated chat_template_onfig=ChatTemplateConfig(model_name='qwen', system=None, meta_instruction=None, eosys=None, user=None, eoh=None, assistant=None, eoa=None, separator=None, capability=None, stop_words=None)
+2025-02-22 11:26:40,117 - lmdeploy - [37mINFO[0m - turbomind.py:301 - model_source: hf_model
+2025-02-22 11:26:45,001 - lmdeploy - [37mINFO[0m - turbomind.py:200 - turbomind model config:
+
+{
+  "model_config": {
+    "model_name": "",
+    "chat_template": "",
+    "model_arch": "Qwen2ForCausalLM",
+    "head_num": 28,
+    "kv_head_num": 4,
+    "hidden_units": 3584,
+    "vocab_size": 152064,
+    "embedding_size": 152064,
+    "num_layer": 28,
+    "inter_size": 18944,
+    "norm_eps": 1e-06,
+    "attn_bias": 1,
+    "start_id": 151643,
+    "end_id": 151645,
+    "size_per_head": 128,
+    "group_size": 128,
+    "weight_type": "bfloat16",
+    "session_len": 32768,
+    "tp": 4,
+    "model_format": "hf",
+    "expert_num": 0,
+    "expert_inter_size": 0,
+    "experts_per_token": 0,
+    "moe_shared_gate": 0,
+    "moe_norm_topk": 0
+  },
+  "attention_config": {
+    "rotary_embedding": 128,
+    "rope_theta": 1000000.0,
+    "attention_factor": -1.0,
+    "max_position_embeddings": 32768,
+    "original_max_position_embeddings": 0,
+    "rope_scaling_type": "",
+    "rope_scaling_factor": 0.0,
+    "use_dynamic_ntk": 0,
+    "low_freq_factor": 1.0,
+    "high_freq_factor": 1.0,
+    "beta_fast": 32.0,
+    "beta_slow": 1.0,
+    "use_logn_attn": 0,
+    "cache_block_seq_len": 64
+  },
+  "lora_config": {
+    "lora_policy": "",
+    "lora_r": 0,
+    "lora_scale": 0.0,
+    "lora_max_wo_r": 0,
+    "lora_rank_pattern": "",
+    "lora_scale_pattern": ""
+  },
+  "engine_config": {
+    "dtype": "auto",
+    "model_format": null,
+    "tp": 4,
+    "session_len": null,
+    "max_batch_size": 256,
+    "cache_max_entry_count": 0.1,
+    "cache_chunk_size": -1,
+    "cache_block_seq_len": 64,
+    "enable_prefix_caching": false,
+    "quant_policy": 0,
+    "rope_scaling_factor": 0.0,
+    "use_logn_attn": false,
+    "download_dir": null,
+    "revision": null,
+    "max_prefill_token_num": 8192,
+    "num_tokens_per_iter": 8192,
+    "max_prefill_iters": 4
+  }
+}
+[TM][WARNING] [LlamaTritonModel] `max_context_token_num` is not set, default to 32768.
+[TM][INFO] Model: 
+head_num: 28
+kv_head_num: 4
+size_per_head: 128
+inter_size: 18944
+num_layer: 28
+vocab_size: 152064
+attn_bias: 1
+max_batch_size: 256
+max_prefill_token_num: 8192
+max_context_token_num: 32768
+num_tokens_per_iter: 8192
+max_prefill_iters: 4
+session_len: 32768
+cache_max_entry_count: 0.1
+cache_block_seq_len: 64
+cache_chunk_size: -1
+enable_prefix_caching: 0
+start_id: 151643
+tensor_para_size: 4
+pipeline_para_size: 1
+enable_custom_all_reduce: 0
+model_name: 
+model_dir: 
+quant_policy: 0
+group_size: 128
+expert_num: 0
+expert_per_token: 0
+moe_method: 1
+
+[TM][INFO] TM_FUSE_SILU_ACT=1
+2025-02-22 11:26:47,515 - lmdeploy - [33mWARNING[0m - turbomind.py:231 - get 849 model params
+Convert to turbomind format:   0%|          | 0/28 [00:00<?, ?it/s]Convert to turbomind format:   4%|▎         | 1/28 [00:01<00:40,  1.50s/it]Convert to turbomind format:   7%|▋         | 2/28 [00:02<00:31,  1.20s/it]Convert to turbomind format:  11%|█         | 3/28 [00:03<00:27,  1.08s/it]Convert to turbomind format:  14%|█▍        | 4/28 [00:04<00:24,  1.00s/it]Convert to turbomind format:  18%|█▊        | 5/28 [00:05<00:22,  1.04it/s]Convert to turbomind format:  21%|██▏       | 6/28 [00:06<00:19,  1.10it/s]Convert to turbomind format:  25%|██▌       | 7/28 [00:08<00:26,  1.27s/it]Convert to turbomind format:  29%|██▊       | 8/28 [00:08<00:23,  1.15s/it]Convert to turbomind format:  32%|███▏      | 9/28 [00:09<00:20,  1.06s/it]Convert to turbomind format:  36%|███▌      | 10/28 [00:10<00:18,  1.00s/it]Convert to turbomind format:  39%|███▉      | 11/28 [00:11<00:16,  1.05it/s]Convert to turbomind format:  43%|████▎     | 12/28 [00:12<00:15,  1.00it/s]Convert to turbomind format:  46%|████▋     | 13/28 [00:13<00:14,  1.04it/s]Convert to turbomind format:  50%|█████     | 14/28 [00:14<00:13,  1.07it/s]Convert to turbomind format:  54%|█████▎    | 15/28 [00:15<00:13,  1.01s/it]Convert to turbomind format:  57%|█████▋    | 16/28 [00:16<00:12,  1.01s/it]Convert to turbomind format:  61%|██████    | 17/28 [00:17<00:10,  1.03it/s]Convert to turbomind format:  64%|██████▍   | 18/28 [00:18<00:09,  1.06it/s]Convert to turbomind format:  68%|██████▊   | 19/28 [00:19<00:08,  1.09it/s]Convert to turbomind format:  71%|███████▏  | 20/28 [00:19<00:07,  1.13it/s]Convert to turbomind format:  75%|███████▌  | 21/28 [00:20<00:06,  1.14it/s]Convert to turbomind format:  79%|███████▊  | 22/28 [00:21<00:05,  1.15it/s]Convert to turbomind format:  82%|████████▏ | 23/28 [00:22<00:04,  1.01it/s]Convert to turbomind format:  86%|████████▌ | 24/28 [00:24<00:04,  1.02s/it]Convert to turbomind format:  89%|████████▉ | 25/28 [00:24<00:02,  1.03it/s]Convert to turbomind format:  93%|█████████▎| 26/28 [00:25<00:01,  1.08it/s]Convert to turbomind format:  96%|█████████▋| 27/28 [00:26<00:00,  1.11it/s]Convert to turbomind format: 100%|██████████| 28/28 [00:27<00:00,  1.14it/s]                                                                            [TM][INFO] [LlamaWeight<T>::prepare] workspace size: 67895296
+
+[TM][INFO] [LlamaWeight<T>::prepare] workspace size: 67895296
+
+[TM][INFO] [LlamaWeight<T>::prepare] workspace size: 67895296
+
+[TM][INFO] [LlamaWeight<T>::prepare] workspace size: 67895296
+
+[WARNING] gemm_config.in is not found; using default GEMM algo
+[WARNING] gemm_config.in is not found; using default GEMM algo
+[WARNING] gemm_config.in is not found; using default GEMM algo
+[WARNING] gemm_config.in is not found; using default GEMM algo
+[TM][INFO] [BlockManager] block_size = 0 MB
+[TM][INFO] [BlockManager] block_size = 0 MB
+[TM][INFO] [BlockManager] block_size = 0 MB
+[TM][INFO] [BlockManager] block_size = 0 MB
+[TM][INFO] [BlockManager] max_block_count = 8518
+[TM][INFO] [BlockManager] chunk_size = 8518
+[TM][INFO] [BlockManager] max_block_count = 8518
+[TM][INFO] [BlockManager] chunk_size = 8518
+[TM][INFO] [BlockManager] max_block_count = 8518
+[TM][INFO] [BlockManager] max_block_count = 8518
+[TM][INFO] [BlockManager] chunk_size = 8518
+[TM][INFO] [BlockManager] chunk_size = 8518
+[TM][INFO] LlamaBatch<T>::Start()
+[TM][INFO] LlamaBatch<T>::Start()
+[TM][INFO] LlamaBatch<T>::Start()
+[TM][INFO] LlamaBatch<T>::Start()
+[TM][INFO] [Gemm2] Tuning sequence: 8, 16, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024, 1536, 2048, 3072, 4096, 6144, 8192
+[TM][INFO] [Gemm2] 8
+[TM][INFO] [Gemm2] 16
+[TM][INFO] [Gemm2] 32
+[TM][INFO] [Gemm2] 48
+[TM][INFO] [Gemm2] 64
+[TM][INFO] [Gemm2] 96
+[TM][INFO] [Gemm2] 128
+[TM][INFO] [Gemm2] 192
+[TM][INFO] [Gemm2] 256
+[TM][INFO] [Gemm2] 384
+[TM][INFO] [Gemm2] 512
+[TM][INFO] [Gemm2] 768
+[TM][INFO] [Gemm2] 1024
+[TM][INFO] [Gemm2] 1536
+[TM][INFO] [Gemm2] 2048
+[TM][INFO] [Gemm2] 3072
+[TM][INFO] [Gemm2] 4096
+[TM][INFO] [Gemm2] 6144
+[TM][INFO] [Gemm2] 8192
+[TM][INFO] [Gemm2] Tuning finished in 0.30 seconds.
+2025-02-22 11:27:17,825 - lmdeploy - [37mINFO[0m - async_engine.py:168 - updated backend_config=TurbomindEngineConfig(dtype='auto', model_format=None, tp=4, session_len=None, max_batch_size=256, cache_max_entry_count=0.1, cache_chunk_size=-1, cache_block_seq_len=64, enable_prefix_caching=False, quant_policy=0, rope_scaling_factor=0.0, use_logn_attn=False, download_dir=None, revision=None, max_prefill_token_num=8192, num_tokens_per_iter=8192, max_prefill_iters=4)
+HINT:    Please open [93m[1mhttp://0.0.0.0:23335[0m in a browser for detailed api usage!!!
+HINT:    Please open [93m[1mhttp://0.0.0.0:23335[0m in a browser for detailed api usage!!!
+HINT:    Please open [93m[1mhttp://0.0.0.0:23335[0m in a browser for detailed api usage!!!
+INFO:     Started server process [495679]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:23335 (Press CTRL+C to quit)
+INFO:     127.0.0.1:45606 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50496 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50506 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50512 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48562 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48568 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46464 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46476 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46478 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60410 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60414 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54250 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54264 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44992 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44996 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56926 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56936 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56946 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45352 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45356 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48262 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48278 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60618 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60630 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44438 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40612 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34512 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34524 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56300 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56316 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56326 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52938 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49674 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49688 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50116 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47950 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47966 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47974 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47988 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43344 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43354 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44684 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44400 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44404 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49804 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49710 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49712 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47808 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47822 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47742 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35890 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35892 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35900 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50380 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45956 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43108 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43110 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43118 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43120 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33198 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33206 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56508 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57460 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57472 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37698 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37708 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58108 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58124 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48512 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48520 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53782 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54292 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54300 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40296 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40304 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37796 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37800 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37802 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37816 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58830 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58836 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49740 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49748 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49762 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58754 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58762 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58766 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37542 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51826 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57212 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45966 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45970 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47950 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46544 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46556 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55210 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40544 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40558 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41650 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41660 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41136 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42920 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50920 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50922 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50928 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50930 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54188 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54194 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54200 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54202 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54210 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33024 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33040 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52380 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35434 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35438 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57474 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57478 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55782 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55792 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33106 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33108 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53800 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53804 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53820 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57344 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57356 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57358 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55790 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55804 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55812 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55816 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58368 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53674 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56936 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56948 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56964 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51370 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43668 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59064 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59074 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59086 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44756 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35940 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35948 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41746 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41760 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43754 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43764 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37748 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50148 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50162 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39570 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42732 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42736 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38436 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38440 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41798 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41810 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41812 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35804 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53686 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53698 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53712 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35748 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35754 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60672 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60674 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59366 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59374 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50280 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47904 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47908 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49010 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54190 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40220 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59774 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59786 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33110 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44896 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44902 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59494 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34420 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34422 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52838 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52842 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45812 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45828 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50424 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38306 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38314 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38326 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38330 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38336 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38338 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41084 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44794 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44798 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44804 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39322 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54362 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54378 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35640 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35652 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57758 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57768 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57776 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42360 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42370 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41694 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41698 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41706 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41710 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40772 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33880 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56378 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56382 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54002 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57560 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57574 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57586 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55882 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55894 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50812 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50820 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42228 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60050 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60058 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47596 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47610 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53764 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53778 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41298 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41302 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39134 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39148 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35894 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50746 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50762 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50370 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34904 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34908 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34918 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54154 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34104 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34116 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34120 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54998 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44402 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44406 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53270 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42912 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53022 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53028 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50024 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50026 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37762 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35968 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35970 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32858 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32860 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32866 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40940 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40946 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40958 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40962 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40976 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40984 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42458 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42460 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42466 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42470 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48538 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48542 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33530 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39214 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59752 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59768 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36616 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55498 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55500 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55502 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55514 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55146 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55160 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55170 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60932 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60936 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56472 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56480 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56490 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40108 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40124 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59174 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59188 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54410 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43044 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43060 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43072 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35014 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36270 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36278 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56120 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56132 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48934 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48948 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48956 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45802 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45806 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60770 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54214 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54226 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54242 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41938 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41946 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46348 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46362 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46370 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56054 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56068 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35376 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35378 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47202 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38878 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38890 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32796 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41298 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42984 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58732 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58746 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58750 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60106 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47584 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45866 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45874 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35454 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57886 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57892 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42260 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42268 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42276 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42284 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54210 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39414 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49574 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39430 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39434 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44704 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44712 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52714 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53502 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53516 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38228 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41480 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41494 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41508 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52132 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57282 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54366 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54368 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53174 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53188 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53198 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50192 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49422 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59106 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59120 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55546 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57900 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57902 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57352 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57360 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57366 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48250 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48258 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58792 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58800 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58808 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43650 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43654 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42452 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42456 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39098 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35408 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35418 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34708 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34716 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60086 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60098 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55566 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55582 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55586 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55596 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34902 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34910 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35294 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35310 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44588 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44598 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44604 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34096 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44234 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33980 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33996 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52760 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52768 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54214 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48098 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43222 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43234 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55302 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60616 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60628 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48664 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56052 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34726 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34742 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34758 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34168 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34178 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34194 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51188 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51204 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40622 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40628 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45706 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47966 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47970 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34864 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34868 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47678 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47686 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38324 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38332 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41846 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41856 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33608 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33624 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33636 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44110 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44112 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44122 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43406 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43422 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44002 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44014 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47474 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47478 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47488 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58160 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32832 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32844 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38210 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38212 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46488 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44210 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44226 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51024 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51040 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49716 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49720 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44346 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56556 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56568 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56574 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36704 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36716 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36720 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50654 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50660 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57678 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57694 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49990 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50002 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40574 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59984 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45720 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45726 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42726 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55888 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43012 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43022 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43024 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54670 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54678 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47410 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47416 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36530 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50038 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50042 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42808 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47332 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47686 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47688 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36176 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36190 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33640 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33646 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33648 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60466 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40990 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41000 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41010 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53676 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46196 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46104 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46106 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46110 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46118 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46130 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41614 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58342 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58352 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58360 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45436 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45450 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45456 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41180 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57984 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33880 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33892 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59436 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59440 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59454 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59458 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44486 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57546 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57560 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39184 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39190 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37784 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37798 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57822 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57824 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47890 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47896 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56510 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58668 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58674 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42682 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60690 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60698 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60712 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57994 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58010 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57352 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57362 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57364 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59044 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59058 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43068 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34618 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34630 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51930 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51942 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51956 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35126 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35134 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47418 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47422 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47428 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54814 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54818 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54832 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54834 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54838 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34360 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50608 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38420 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38422 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59318 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60946 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60960 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60968 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36830 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45318 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42610 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42616 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42632 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34548 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42408 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42424 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46530 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46534 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33824 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42272 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42276 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42282 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42290 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52946 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52954 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34528 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34542 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34554 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42734 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33924 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33934 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33950 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39272 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42582 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56848 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56858 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57720 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48114 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48380 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48394 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48400 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36316 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54602 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54614 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45318 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50606 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50612 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52884 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52896 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42980 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42984 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35386 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35392 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41916 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41928 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41940 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41942 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42254 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50986 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49756 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34860 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34876 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38828 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38832 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56004 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56018 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56024 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56034 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56110 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34294 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34298 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44314 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51850 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51858 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58956 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58966 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58968 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37418 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51024 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51032 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51034 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58744 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38826 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38842 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34784 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35400 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35404 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35418 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35424 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55974 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55982 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40840 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37224 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37236 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37250 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45134 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45146 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48940 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48956 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43880 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43892 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43900 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43910 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57820 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57830 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49958 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49966 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59442 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59446 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38796 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54076 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54080 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52328 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52342 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52354 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56650 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59666 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41194 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47280 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47286 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58938 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46230 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46242 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46248 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35672 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32842 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32844 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32854 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50946 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34432 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47594 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47610 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34356 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34360 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40264 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41758 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41768 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41784 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36526 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35036 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59964 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59968 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39774 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39780 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44622 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56216 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33624 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33636 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46594 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59164 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59174 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44744 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41046 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42744 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42756 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42758 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42766 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43702 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52840 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52462 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60086 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43184 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43190 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40498 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46750 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46764 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40132 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48706 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48720 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48722 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39578 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41594 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41596 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38122 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38126 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35502 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35516 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42318 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42334 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44970 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44986 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53432 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53436 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53452 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39584 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39594 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47644 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47646 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47654 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49146 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49150 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50584 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38396 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38412 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40456 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40468 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40470 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40474 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58988 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46802 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46808 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46824 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55780 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48232 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48238 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48240 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59428 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59432 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50416 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53856 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53862 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60172 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60188 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60196 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52906 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52918 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38924 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38936 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38946 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46744 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53986 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53994 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42546 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42550 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58066 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58074 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58090 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43280 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53918 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53928 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48042 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34688 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34692 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36144 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38610 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38618 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47748 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45426 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45432 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54848 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35402 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35406 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38918 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47748 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55084 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55090 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50242 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41840 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41842 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32980 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34498 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34500 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40222 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40224 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56158 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38128 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38132 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38148 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38152 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37912 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37916 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48574 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48584 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48596 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45622 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44688 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44694 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43368 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43376 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55484 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36634 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36644 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46562 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46570 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46576 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57108 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41298 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50696 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50708 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50712 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50718 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48322 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54160 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54166 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43870 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53378 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53390 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33060 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40574 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56858 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56864 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33432 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33436 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56580 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56592 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56602 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44730 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44744 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44428 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44432 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44436 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56204 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53294 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53298 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52370 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52376 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37714 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37718 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49762 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51384 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51390 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48528 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51700 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51716 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51720 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45412 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45418 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45434 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37594 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54730 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54744 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55212 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53566 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55994 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56010 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41632 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41636 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56232 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56236 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41342 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56964 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56968 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56978 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56990 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42062 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42064 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40498 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60524 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60536 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56296 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52960 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52974 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41324 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41332 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41336 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35846 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59964 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59976 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59982 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37988 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45328 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41948 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41958 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41970 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41976 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51562 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51568 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57506 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57522 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49446 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49454 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48758 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44064 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44296 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42814 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42830 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42842 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42854 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50290 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50292 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44086 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59406 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59410 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59416 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60544 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60558 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38730 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38738 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53132 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53142 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43564 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40914 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40926 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40938 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35034 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35046 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47228 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47242 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48956 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49212 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49226 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56360 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56364 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56368 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43396 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43412 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45852 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45854 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41550 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41558 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54224 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54230 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56528 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56532 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56608 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60126 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60132 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59216 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54660 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34052 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34062 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38796 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38802 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56098 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56104 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57540 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57556 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32950 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34992 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35002 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33094 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33640 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33642 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54996 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55004 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40144 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55412 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55414 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47452 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47458 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47474 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36680 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36696 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36712 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51604 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37018 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37032 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37046 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42790 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51004 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35568 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35578 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32852 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51242 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41302 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41304 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41314 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41320 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41334 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39046 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39052 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48046 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38534 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38536 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33778 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41984 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58118 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58120 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48788 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34226 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34234 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40606 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42532 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42544 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45264 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45272 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45286 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45296 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45686 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41476 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41488 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41494 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41498 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38846 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49666 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49680 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36216 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44206 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42802 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42808 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38378 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38390 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41760 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:41776 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58100 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58106 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60650 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47016 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47020 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47030 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47046 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44184 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44198 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37100 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56462 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33884 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33892 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34488 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34504 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59484 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60548 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60552 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33580 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33590 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58870 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44414 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44428 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44438 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44446 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43208 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43210 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53834 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53844 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58104 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40896 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40906 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48368 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48372 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48376 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51582 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51590 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37582 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37174 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34760 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34772 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40752 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52782 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42084 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42092 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42102 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42116 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42974 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42984 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54108 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54408 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54416 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54432 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50952 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50954 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37236 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37246 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37256 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37272 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38620 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38628 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38636 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38652 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53410 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53418 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48362 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38124 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35312 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50390 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50392 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50396 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46718 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46722 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53592 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40444 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37146 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37152 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35952 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35958 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39122 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47238 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47248 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47886 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47898 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43976 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49388 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56992 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51906 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51912 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56948 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56956 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56962 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39704 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45456 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45472 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57102 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50996 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50998 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51482 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51488 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47154 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43452 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55274 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52090 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52092 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52100 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33962 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53886 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53898 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53902 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42314 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42326 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52846 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52858 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52870 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38130 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38136 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38018 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38030 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59802 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59818 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34018 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34034 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52704 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51536 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52654 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40608 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33672 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47232 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47234 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39524 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51690 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51706 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51722 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50240 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50252 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34520 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37906 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37910 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34326 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34338 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34352 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35480 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55250 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55266 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55278 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52994 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46800 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46812 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46822 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51442 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51446 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39640 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39654 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39656 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48516 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48520 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54444 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34486 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34498 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38380 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38382 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38394 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46924 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:46926 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49754 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39270 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34928 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:34942 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60288 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60294 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32878 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32888 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44084 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44100 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33334 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33342 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51994 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52010 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53110 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50940 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45752 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45762 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45768 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45846 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45856 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37290 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37294 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50718 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50728 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:35978 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32874 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58296 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58302 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58306 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55892 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39380 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:39382 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58966 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58982 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36244 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38928 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38940 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58964 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58974 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33740 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33754 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33766 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33778 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42434 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42442 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45080 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45086 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52154 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52158 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53942 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53958 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60148 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60152 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49586 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49590 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47260 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:47268 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55286 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55290 - "POST /v1/chat/completions HTTP/1.1" 404 Not Found
