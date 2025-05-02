@@ -257,7 +257,7 @@ class HRBenchDataset(ImageMCQDataset):
 class VStarDataset(ImageMCQDataset):
 
     DATASET_URL = {
-        'vstar': '/mnt/data/users/wenbinwang/datasets/LVLM_Benchmark/LMUData/vstar.tsv'
+        'vstar': 'vstar.tsv'
     }
 
     DATASET_MD5 = {

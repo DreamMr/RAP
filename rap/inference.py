@@ -136,19 +136,12 @@ def infer_data(model_name, work_dir, dataset, out_file, verbose=False, api_nproc
         
         with ThreadPoolExecutor(max_workers=workers) as executor:
             results = list(executor.map(generate, batch_data_list))
-        #results = [generate(batch_data_list[0])]
-        
-        # response = model.generate(message=struct, dataset=dataset_name, no_rag=no_rag)
         torch.cuda.empty_cache()
 
         for response_dict in results:
             if response_dict is None:
                 continue
             
-            # if verbose:
-            #     print(response, flush=True)
-
-            #res[idx] = response
             res.update(response_dict)
             if (i + 1) % 1 == 0:
                 dump(res, out_file)

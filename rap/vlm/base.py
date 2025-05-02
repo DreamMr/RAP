@@ -125,12 +125,12 @@ class BaseModel:
         self.rag_tokenizer = AutoTokenizer.from_pretrained(self.rag_model_path, trust_remote_code=True)
         self.rag_model = AutoModel.from_pretrained(self.rag_model_path, torch_dtype=torch.bfloat16, trust_remote_code=True).cuda()
         self.rag_model.eval()
-        self.rag_image_size = 224 # 4k 224 8k:336
+        self.rag_image_size = 224
         self.debug=debug
         self.is_process_image = is_process_image
         self.processed_image_path = processed_image_path
         self.mapping = None
-        self.max_step=max_step # 4k 100 8k 200 2k 30
+        self.max_step=max_step
         self.bias_value = bias_value
         print("Max step: {}, bias_value: {}".format(max_step, bias_value))
         if self.processed_image_path is not None:
@@ -153,7 +153,6 @@ class BaseModel:
             select_k = int(k * non_zero_patch_num)
             topk_values, topk_indices = torch.topk(scores, max(1,select_k), dim=0, largest=True, sorted=False)
             for selected_idx in topk_indices:
-                #original_idx = filtered_mapping_indices[selected_idx.item()]
                 row_idx = selected_idx // cols
                 col_idx = selected_idx % cols
                 original_matrix[row_idx][col_idx] = flatten_image_matrix[selected_idx]
@@ -420,7 +419,6 @@ class BaseModel:
         threshold_descrease = [0.1, 0.1, 0.2]
         temp_threshold_descrease = deepcopy(threshold_descrease)
         answering_confidence_threshold_upper = 1.3
-        print(f"width: {width}, height: {height}, rag_image_size: {rag_image_size}")
         pop_num_limit = math.log((width * height) // (rag_image_size * rag_image_size), 4)
         pop_num_limit = int(pop_num_limit * 5)
         num_interval =5
