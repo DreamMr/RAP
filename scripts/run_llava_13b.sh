@@ -24,6 +24,5 @@ processed_dataset=HRBench8K_single
 work_dir=/mnt/data/users/wenbinwang/LVLM_results/llava_v15_13b_vrag_hrbench8k_benchmark_astar_rap_step200_img_size_336/${MODEL_NAME}
 PROCESSED_IMAGE_PATH=$work_dir/${dataset}/images
 mkdir -p $work_dir
-# torchrun --nproc-per-node=$GPU --master_port 29501 run.py --data $processed_dataset --model $MODEL_NAME --judge chatgpt-0125 --work-dir $work_dir --model_path $MODEL_PATH --is_process_image --processed_image_path $PROCESSED_IMAGE_PATH --rag_model_path $RAG_MODEL_PATH --max_step 200
 
 torchrun --nproc-per-node=$GPU --master_port 29501 run.py --data $dataset --model $MODEL_NAME --judge chatgpt-0125 --work-dir $work_dir --model_path $MODEL_PATH --processed_image_path $PROCESSED_IMAGE_PATH --rag_model_path $RAG_MODEL_PATH

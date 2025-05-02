@@ -2,6 +2,18 @@ import pandas as pd
 from abc import abstractmethod
 from ..smp import *
 
+def LOCALIZE(fname, new_fname=None):
+    if new_fname is None:
+        new_fname = fname.replace('.tsv', '_local.tsv')
+
+    base_name = osp.basename(fname)
+    dname = osp.splitext(base_name)[0]
+
+    data = load(fname)
+    data_new = localize_df(data, dname)
+    dump(data_new, new_fname)
+    print(f'The localized version of data file is {new_fname}')
+    return new_fname
 
 class ImageBaseDataset:
 
@@ -13,7 +25,7 @@ class ImageBaseDataset:
         ROOT = LMUDataRoot()
         # You can override this variable to save image files to a different directory
         self.dataset_name = dataset
-        self.img_root = osp.join(ROOT, 'images')
+        self.img_root = osp.join(ROOT, 'images', self.dataset_name)
 
         data = self.load_data(dataset)
         self.skip_noimg = skip_noimg
@@ -73,7 +85,6 @@ class ImageBaseDataset:
         if file_size(data_path, 'GB') > 1:
             local_path = data_path.replace('.tsv', '_local.tsv')
             if not osp.exists(local_path) or os.environ.get('FORCE_LOCAL', None) or update_flag:
-                from ..tools import LOCALIZE
                 LOCALIZE(data_path, local_path)
             data_path = local_path
         return load(data_path)

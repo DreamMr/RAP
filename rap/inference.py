@@ -104,7 +104,7 @@ def infer_data(model_name, work_dir, dataset, out_file, verbose=False, api_nproc
     else:
         model.set_dump_image(dataset.dump_image)
 
-    workers = 10
+    workers = 8
     for i in tqdm(range(0,lt, workers)):
         
         batch_data_list = []
@@ -150,7 +150,7 @@ def infer_data(model_name, work_dir, dataset, out_file, verbose=False, api_nproc
 
             #res[idx] = response
             res.update(response_dict)
-            if (i + 1) % 20 == 0:
+            if (i + 1) % 1 == 0:
                 dump(res, out_file)
 
     res = {k: res[k] for k in data_indices}
@@ -199,30 +199,5 @@ def infer_data_job(model, work_dir, model_name, dataset, verbose=False, api_npro
         dump(data, result_file)
         for i in range(world_size):
             os.remove(tmpl.format(i))
-            
-        # def draw_sim(score,file_path):
-        #     score = score
-        #     plt.hist(score,bins=30, edgecolor='black')
-        #     plt.savefig(file_path)
-        #     plt.clf()
-            
-        # for k,v in model.skewness_list.items():
-        #     file_path = f'./{k}_skew.png'
-        #     v = np.array(v)
-        #     draw_sim(v,file_path)
-            
-        # for k,v in model.mean_list.items():
-        #     file_path = f'./{k}_mean.png'
-        #     v = np.array(v)
-        #     draw_sim(v,file_path)
-            
-        # for k,v in model.std_list.items():
-        #     file_path = f'./{k}_std.png'
-        #     v = np.array(v)
-        #     draw_sim(v,file_path)
-            
-        # dump(model.skewness_list,'./skew.json')
-        # dump(model.mean_list,'./mean.json')
-        # dump(model.std_list,'./std.json')
-        
+                    
     return model

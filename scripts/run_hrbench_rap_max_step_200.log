@@ -1,0 +1,242 @@
+[TM][WARNING] [LlamaTritonModel] `max_context_token_num` is not set, default to 32768.
+[TM][INFO] Model: 
+head_num: 28
+kv_head_num: 4
+size_per_head: 128
+inter_size: 18944
+num_layer: 28
+vocab_size: 152064
+attn_bias: 1
+max_batch_size: 256
+max_prefill_token_num: 8192
+max_context_token_num: 32768
+num_tokens_per_iter: 8192
+max_prefill_iters: 4
+session_len: 32768
+cache_max_entry_count: 0.1
+cache_block_seq_len: 64
+cache_chunk_size: -1
+enable_prefix_caching: 0
+start_id: 151643
+tensor_para_size: 4
+pipeline_para_size: 1
+enable_custom_all_reduce: 0
+model_name: 
+model_dir: 
+quant_policy: 0
+group_size: 128
+expert_num: 0
+expert_per_token: 0
+moe_method: 1
+
+W0423 03:49:52.575968 1021844 site-packages/torch/distributed/run.py:793] 
+W0423 03:49:52.575968 1021844 site-packages/torch/distributed/run.py:793] *****************************************
+W0423 03:49:52.575968 1021844 site-packages/torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0423 03:49:52.575968 1021844 site-packages/torch/distributed/run.py:793] *****************************************
+[TM][INFO] TM_FUSE_SILU_ACT=1
+Convert to turbomind format:   0%|          | 0/28 [00:00<?, ?it/s]Convert to turbomind format:   4%|▎         | 1/28 [00:01<00:44,  1.65s/it]Convert to turbomind format:   7%|▋         | 2/28 [00:02<00:33,  1.28s/it]Convert to turbomind format:  11%|█         | 3/28 [00:03<00:28,  1.16s/it]Convert to turbomind format:  14%|█▍        | 4/28 [00:04<00:26,  1.10s/it]Convert to turbomind format:  18%|█▊        | 5/28 [00:05<00:24,  1.06s/it]Convert to turbomind format:  21%|██▏       | 6/28 [00:06<00:22,  1.01s/it]Convert to turbomind format:  25%|██▌       | 7/28 [00:08<00:27,  1.33s/it]Convert to turbomind format:  29%|██▊       | 8/28 [00:09<00:24,  1.24s/it]Convert to turbomind format:  32%|███▏      | 9/28 [00:10<00:22,  1.17s/it]Convert to turbomind format:  36%|███▌      | 10/28 [00:11<00:20,  1.12s/it]Convert to turbomind format:  39%|███▉      | 11/28 [00:12<00:18,  1.08s/it]Convert to turbomind format:  43%|████▎     | 12/28 [00:13<00:17,  1.11s/it]Convert to turbomind format:  46%|████▋     | 13/28 [00:14<00:16,  1.07s/it]Convert to turbomind format:  50%|█████     | 14/28 [00:15<00:14,  1.06s/it]Convert to turbomind format:  54%|█████▎    | 15/28 [00:17<00:14,  1.14s/it]Convert to turbomind format:  57%|█████▋    | 16/28 [00:18<00:13,  1.15s/it]Convert to turbomind format:  61%|██████    | 17/28 [00:19<00:12,  1.11s/it]Convert to turbomind format:  64%|██████▍   | 18/28 [00:20<00:10,  1.08s/it]Convert to turbomind format:  68%|██████▊   | 19/28 [00:21<00:09,  1.07s/it]Convert to turbomind format:  71%|███████▏  | 20/28 [00:22<00:08,  1.04s/it]Convert to turbomind format:  75%|███████▌  | 21/28 [00:23<00:07,  1.02s/it]Convert to turbomind format:  79%|███████▊  | 22/28 [00:24<00:06,  1.01s/it]Convert to turbomind format:  82%|████████▏ | 23/28 [00:25<00:05,  1.13s/it]Convert to turbomind format:  86%|████████▌ | 24/28 [00:26<00:04,  1.16s/it]Convert to turbomind format:  89%|████████▉ | 25/28 [00:27<00:03,  1.12s/it]Convert to turbomind format:  93%|█████████▎| 26/28 [00:28<00:02,  1.07s/it]Convert to turbomind format:  96%|█████████▋| 27/28 [00:29<00:01,  1.05s/it]Convert to turbomind format: 100%|██████████| 28/28 [00:30<00:00,  1.03s/it]                                                                            [TM][INFO] [LlamaWeight<T>::prepare] workspace size: 67895296
+
+[TM][INFO] [LlamaWeight<T>::prepare] workspace size: 67895296
+
+[TM][INFO] [LlamaWeight<T>::prepare] workspace size: 67895296
+
+[TM][INFO] [LlamaWeight<T>::prepare] workspace size: 67895296
+
+[TM][INFO] [BlockManager] block_size = 0 MB
+[TM][INFO] [BlockManager] block_size = 0 MB
+[TM][INFO] [BlockManager] block_size = 0 MB
+[TM][INFO] [BlockManager] block_size = 0 MB
+[TM][INFO] [BlockManager] max_block_count = 7012
+[TM][INFO] [BlockManager] max_block_count = 7012
+[TM][INFO] [BlockManager] max_block_count = 7012
+[TM][INFO] [BlockManager] max_block_count = 7012
+[TM][INFO] [BlockManager] chunk_size = 7012
+[TM][INFO] [BlockManager] chunk_size = 7012
+[TM][INFO] [BlockManager] chunk_size = 7012
+[TM][INFO] [BlockManager] chunk_size = 7012
+[TM][INFO] LlamaBatch<T>::Start()
+[TM][INFO] LlamaBatch<T>::Start()
+[TM][INFO] LlamaBatch<T>::Start()
+[TM][INFO] LlamaBatch<T>::Start()
+[TM][INFO] [Gemm2] Tuning sequence: 8, 16, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024, 1536, 2048, 3072, 4096, 6144, 8192
+[TM][INFO] [Gemm2] 8
+[TM][INFO] [Gemm2] 16
+[TM][INFO] [Gemm2] 32
+[TM][INFO] [Gemm2] 48
+[TM][INFO] [Gemm2] 64
+[TM][INFO] [Gemm2] 96
+[TM][INFO] [Gemm2] 128
+[TM][INFO] [Gemm2] 192
+[TM][INFO] [Gemm2] 256
+[TM][INFO] [Gemm2] 384
+[TM][INFO] [Gemm2] 512
+[TM][INFO] [Gemm2] 768
+[TM][INFO] [Gemm2] 1024
+[TM][INFO] [Gemm2] 1536
+[TM][INFO] [Gemm2] 2048
+[TM][INFO] [Gemm2] 3072
+[TM][INFO] [Gemm2] 4096
+[TM][INFO] [Gemm2] 6144
+[TM][INFO] [Gemm2] 8192
+[TM][INFO] [Gemm2] Tuning finished in 0.36 seconds.
+INFO:     Started server process [1021777]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 98] error while attempting to bind on address ('0.0.0.0', 23335): address already in use
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+[TM][INFO] [InternalThreadEntry] stop requested.
+[TM][INFO] [InternalThreadEntry] stop requested.
+[TM][INFO] [InternalThreadEntry] stop requested.
+[TM][INFO] [InternalThreadEntry] stop requested.
+[TM][INFO] [OutputThreadEntry] stop requested.
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+data path: /mnt/data/users/wenbinwang/datasets/LVLM_Benchmark/LMUData/hr_bench_8k_single.tsv
+data md5: 8d47e46b373bb4983cc84448749fe532
+file md5: 8d47e46b373bb4983cc84448749fe532
+[rank3]:[W423 03:50:51.393095658 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 3]  using GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank2]:[W423 03:50:51.393307240 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 2]  using GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank1]:[W423 03:50:51.393320179 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank0]:[W423 03:50:51.503443815 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+MiniCPMForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+MiniCPMForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+MiniCPMForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+MiniCPMForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.49s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.39s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.56s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.60s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.03s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.07s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.08s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.13s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.08s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.16s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.08s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.16s/it]
+W0423 03:51:57.347808 1021844 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 1021980 closing signal SIGTERM
+W0423 03:51:57.357933 1021844 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 1021981 closing signal SIGTERM
+W0423 03:51:57.358358 1021844 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 1021982 closing signal SIGTERM
+W0423 03:51:57.358670 1021844 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 1021983 closing signal SIGTERM
+Traceback (most recent call last):
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 696, in run
+    result = self._invoke_run(role)
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 855, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 84, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 1021844 got signal: 1
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/logging/__init__.py", line 1697, in isEnabledFor
+    return self._cache[level]
+KeyError: 30
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/site-packages/torch/distributed/run.py", line 919, in main
+    run(args)
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/site-packages/torch/distributed/run.py", line 910, in run
+    elastic_launch(
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 260, in launch_agent
+    result = agent.run()
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 137, in wrapper
+    result = f(*args, **kwargs)
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 704, in run
+    logger.warning("Received %s death signal, shutting down workers", e.sigval)
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/logging/__init__.py", line 1457, in warning
+    if self.isEnabledFor(WARNING):
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/logging/__init__.py", line 1699, in isEnabledFor
+    _acquireLock()
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/logging/__init__.py", line 224, in _acquireLock
+    if _lock:
+  File "/mnt/code/users/liamding/tools/conda_install/anaconda3/envs/vlm_llava_lmdeploy/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 84, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 1021844 got signal: 1
+W0423 03:52:06.402188 1022210 site-packages/torch/distributed/run.py:793] 
+W0423 03:52:06.402188 1022210 site-packages/torch/distributed/run.py:793] *****************************************
+W0423 03:52:06.402188 1022210 site-packages/torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0423 03:52:06.402188 1022210 site-packages/torch/distributed/run.py:793] *****************************************
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+Did not detect the .env file at /mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/.env, failed to load. 
+data path: /mnt/data/users/wenbinwang/datasets/LVLM_Benchmark/LMUData/hr_bench_4k_single.tsv
+data md5: e74e191f52bb5cdc85c06058bcb9e101
+file md5: e74e191f52bb5cdc85c06058bcb9e101
+[rank2]:[W423 03:53:02.990031641 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 2]  using GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank1]:[W423 03:53:02.994991621 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank3]:[W423 03:53:02.995086844 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 3]  using GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank0]:[W423 03:53:02.007090387 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+MiniCPMForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+MiniCPMForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+MiniCPMForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+MiniCPMForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  1.35it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.12s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.15s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.19s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.24it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.52it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.15it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.49it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.21it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.14it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.22it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.16it/s]
+Max step: 200, bias_value: 0.2
+Rank 0:  Loaded LLaVA model: /mnt/data/users/wenbinwang/huggingface/llava-onevision-qwen2-0.5b-ov
+Max step: 200, bias_value: 0.2
+Max step: 200, bias_value: 0.2
+Max step: 200, bias_value: 0.2
+You are using a model of type llava to instantiate a model of type llava_qwen. This is not supported for all configurations of models and can yield errors.
+You are using a model of type llava to instantiate a model of type llava_qwen. This is not supported for all configurations of models and can yield errors.
+You are using a model of type llava to instantiate a model of type llava_qwen. This is not supported for all configurations of models and can yield errors.
+You are using a model of type llava to instantiate a model of type llava_qwen. This is not supported for all configurations of models and can yield errors.
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+Rank 0:  Loading vision tower: /mnt/data/users/wenbinwang/huggingface/siglip-so400m-patch14-384
+Rank 0:  Model Class: LlavaQwenForCausalLM
+  0%|          | 0/7 [00:00<?, ?it/s]  0%|          | 0/7 [00:00<?, ?it/s]  0%|          | 0/7 [00:00<?, ?it/s]  0%|          | 0/7 [00:00<?, ?it/s] 14%|█▍        | 1/7 [02:25<14:34, 145.70s/it] 14%|█▍        | 1/7 [03:17<19:44, 197.38s/it] 29%|██▊       | 2/7 [03:53<09:18, 111.65s/it] 29%|██▊       | 2/7 [05:00<11:49, 141.85s/it] 14%|█▍        | 1/7 [05:00<30:05, 300.87s/it] 14%|█▍        | 1/7 [06:34<39:27, 394.62s/it] 29%|██▊       | 2/7 [08:46<19:59, 239.90s/it] 43%|████▎     | 3/7 [09:27<13:15, 199.00s/it] 29%|██▊       | 2/7 [10:21<26:02, 312.55s/it] 43%|████▎     | 3/7 [10:21<15:51, 237.77s/it] 43%|████▎     | 3/7 [11:37<13:53, 208.43s/it] 43%|████▎     | 3/7 [13:36<17:15, 258.98s/it] 57%|█████▋    | 4/7 [15:14<12:52, 257.56s/it] 57%|█████▋    | 4/7 [15:23<13:09, 263.12s/it] 57%|█████▋    | 4/7 [15:52<11:20, 226.77s/it] 71%|███████▏  | 5/7 [17:00<06:46, 203.22s/it] 71%|███████▏  | 5/7 [17:03<06:47, 203.83s/it] 71%|███████▏  | 5/7 [18:58<07:04, 212.16s/it] 57%|█████▋    | 4/7 [19:02<14:16, 285.49s/it] 71%|███████▏  | 5/7 [20:28<07:06, 213.41s/it] 86%|████████▌ | 6/7 [21:45<03:51, 231.15s/it]100%|██████████| 7/7 [22:09<00:00, 163.40s/it]100%|██████████| 7/7 [22:09<00:00, 189.95s/it]
+ 86%|████████▌ | 6/7 [23:20<04:22, 262.91s/it]100%|██████████| 7/7 [23:48<00:00, 186.00s/it]100%|██████████| 7/7 [23:48<00:00, 204.07s/it]
+ 86%|████████▌ | 6/7 [24:20<03:39, 219.58s/it] 86%|████████▌ | 6/7 [24:22<04:10, 250.14s/it]100%|██████████| 7/7 [26:47<00:00, 215.84s/it]100%|██████████| 7/7 [26:47<00:00, 229.63s/it]
+100%|██████████| 7/7 [27:28<00:00, 209.30s/it]100%|██████████| 7/7 [27:28<00:00, 235.47s/it]
+[rank0]:[W423 04:21:53.980854365 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())

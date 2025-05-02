@@ -4,6 +4,18 @@ from .image_base import ImageBaseDataset
 from .utils import build_judge, DEBUG_MESSAGE
 from ..smp import *
 
+def LOCALIZE(fname, new_fname=None):
+    if new_fname is None:
+        new_fname = fname.replace('.tsv', '_local.tsv')
+
+    base_name = osp.basename(fname)
+    dname = osp.splitext(base_name)[0]
+
+    data = load(fname)
+    data_new = localize_df(data, dname)
+    dump(data_new, new_fname)
+    print(f'The localized version of data file is {new_fname}')
+    return new_fname
 
 
 class ImageMCQDataset(ImageBaseDataset):
@@ -140,22 +152,28 @@ class HRBenchDataset(ImageMCQDataset):
     DATASET_URL = {
         'HRBench4K': 'https://huggingface.co/datasets/DreamMr/HR-Bench/resolve/main/hr_bench_4k.tsv',
         'HRBench8K': 'https://huggingface.co/datasets/DreamMr/HR-Bench/resolve/main/hr_bench_8k.tsv',
-        'HRBench4K_single': '/mnt/data/users/wenbinwang/datasets/LVLM_Benchmark/LMUData/hr_bench_4k_single.tsv',
-        'HRBench8K_single': '/mnt/data/users/wenbinwang/datasets/LVLM_Benchmark/LMUData/hr_bench_8k_single.tsv',
+        'HRBench4K_single': 'hr_bench_4k_single.tsv',
+        'HRBench8K_single': 'hr_bench_8k_single.tsv',
     }
 
     DATASET_MD5 = {
         'HRBench4K': 'f6b041b03d49543494b8a56d2e35be65',
         'HRBench8K': '274c9c7f89329b804a4723178a00219c',
-        "HRBench4K_single": 'e74e191f52bb5cdc85c06058bcb9e101',
-        "HRBench8K_single": '8d47e46b373bb4983cc84448749fe532',
+        "HRBench4K_single": '6085b85e8602c943b6a850db1210f144',
+        "HRBench8K_single": '8f8f41fa4f611798473e72fcac9e3c80',
     }
 
     def process_image(self, eval_file, processed_image_path_folder):
         assert os.path.exists(eval_file), '{} does not exist!'.format(eval_file)
         data_list = load(eval_file)
         data_dict = {}
-        original_image_path_list = [str(x) for x in data_list['image_path']]
+        MAPPING_DATASET = {
+            "HRBench4K_single": 'hr_bench_4k',
+            "HRBench8K_single": 'hr_bench_8k',
+        }
+        ROOT = LMUDataRoot()
+        original_image_path = os.path.join(ROOT, 'images', MAPPING_DATASET[self.dataset_name])
+        #original_image_path_list = [str(x) for x in data_list['image_path']]
         processed_image_path_list = [str(x) for x in data_list['prediction']]
         index_list = [int(x) for x in data_list['index']]
         
@@ -163,7 +181,7 @@ class HRBenchDataset(ImageMCQDataset):
             index = index_list[idx]
             
             processed_image_path = processed_image_path_list[idx]
-            original_image_path = os.path.dirname(original_image_path_list[idx])
+            #original_image_path = os.path.dirname(original_image_path_list[idx])
             for i in range(index,index+4):
                 map_original_image_path = os.path.join(original_image_path,'{}.jpg'.format(i))
                 data_dict[map_original_image_path] = processed_image_path
@@ -239,12 +257,13 @@ class HRBenchDataset(ImageMCQDataset):
 class VStarDataset(ImageMCQDataset):
 
     DATASET_URL = {
-        'vstar': '/mnt/data/users/wenbinwang/datasets/LVLM_Benchmark/LMUData/vstar_ori.tsv'
+        'vstar': '/mnt/data/users/wenbinwang/datasets/LVLM_Benchmark/LMUData/vstar.tsv'
     }
 
     DATASET_MD5 = {
-        'vstar': 'e8de6996211cdb6363aed7d585d2f228'
+        'vstar': '39ba397ba0e93d798b698db9e1421eeb'
     }
+    
 
     def evaluate(self, eval_file, **judge_kwargs):
         assert os.path.exists(eval_file), '{} does not exist!'.format(eval_file)
@@ -314,7 +333,6 @@ class CustomMCQDataset(ImageMCQDataset):
         if file_size(data_path, 'GB') > 1:
             local_path = data_path.replace('.tsv', '_local.tsv')
             if not osp.exists(local_path) or os.environ.get('FORCE_LOCAL', None):
-                from ..tools import LOCALIZE
                 LOCALIZE(data_path, local_path)
             data_path = local_path
         return load(data_path)

@@ -376,6 +376,8 @@ class BaseModel:
                     return message
                 else:
                     return new_image_path
+            else:
+                print(f"{image_path}: {new_image_path}")
         
         for mess in message:
             if mess['type'] == 'text':
@@ -388,15 +390,18 @@ class BaseModel:
         new_image = image
         width, height = image.size
         if "llava-onevision" in self.model_path:
-            self.rag_image_size = 448 # hrbench
-        else:
-            if max(width,height) > 5096:
-                self.rag_image_size = 336
+            if max(width, height) >= 4000:
+                rag_image_size = 448
             else:
-                self.rag_image_size = 224 # default 224
+                rag_image_size = 112
+        else:
+            if max(width, height) > 5096:
+                rag_image_size = 336
+            else:
+                rag_image_size = 224 # default 224
         
         # Create Image Memory
-        embedding_image, image_matrix, image_patch_list = self.create_image_memory(image, self.rag_image_size)
+        embedding_image, image_matrix, image_patch_list = self.create_image_memory(image, rag_image_size)
         # Calculate Retrieval Score
         INSTRUCTION = "Represent this query for retrieving relevant documents: "
         embedding_query = encode([INSTRUCTION + query], self.rag_tokenizer, self.rag_model)
@@ -404,7 +409,7 @@ class BaseModel:
         retrieval_score = 1 + retrieval_score
         retrieval_score[0] = 0.
         # Search
-        answer_value = self._answer_confidence(query, image_matrix, image_patch_list, self.rag_image_size)
+        answer_value = self._answer_confidence(query, image_matrix, image_patch_list, rag_image_size)
         retrieval_value = self._retrieval_confidence([image_matrix], retrieval_score)[0]
         confidence = answer_value
         root_node = TreeNode(image=image_matrix, confidence=confidence, depth=1, answer_score=answer_value, retrieval_score=retrieval_value)
@@ -415,7 +420,8 @@ class BaseModel:
         threshold_descrease = [0.1, 0.1, 0.2]
         temp_threshold_descrease = deepcopy(threshold_descrease)
         answering_confidence_threshold_upper = 1.3
-        pop_num_limit = math.log((width * height) // (self.rag_image_size * self.rag_image_size), 4)
+        print(f"width: {width}, height: {height}, rag_image_size: {rag_image_size}")
+        pop_num_limit = math.log((width * height) // (rag_image_size * rag_image_size), 4)
         pop_num_limit = int(pop_num_limit * 5)
         num_interval =5
         visit_leaf = False
@@ -440,26 +446,26 @@ class BaseModel:
                 pop_num_limit += num_interval
             
             width, height = cur_node.image.shape
-            width = width * self.rag_image_size
-            height = height * self.rag_image_size
-            if max(width, height) <= self.rag_image_size:
+            width = width * rag_image_size
+            height = height * rag_image_size
+            if max(width, height) <= rag_image_size:
                 visit_leaf = True
                 continue
             
             expanded_nodes = []
             sub_image_list = []
-            sub_image_list = self._erosion(cur_node.image, retrieval_score, k_list, self.rag_image_size)
+            sub_image_list = self._erosion(cur_node.image, retrieval_score, k_list, rag_image_size)
             retrieval_score_list = self._retrieval_confidence(sub_image_list, retrieval_score)
             assert len(retrieval_score_list) == len(sub_image_list)
             for idx in range(len(sub_image_list)):
-                answer_score = self._answer_confidence(query, sub_image_list[idx], image_patch_list, self.rag_image_size)
+                answer_score = self._answer_confidence(query, sub_image_list[idx], image_patch_list, rag_image_size)
                 cur_retrieval_score = retrieval_score_list[idx].item()
                 w = get_confidence_weight(cur_node.depth, self.bias_value)
                 confidence = (1.-w) * cur_retrieval_score + w * answer_score
                 new_node = TreeNode(depth=cur_node.depth+1, confidence=confidence, image=sub_image_list[idx], answer_score=answer_score, retrieval_score=cur_retrieval_score, parent=cur_node, select_idx=idx)
                 if self.debug:
                     image_name = f'debug_image/{cur_node.depth+1}_{confidence}.png'
-                    cur_sub_image = self.map2image(sub_image_list[idx],image_patch_list, self.rag_image_size)
+                    cur_sub_image = self.map2image(sub_image_list[idx],image_patch_list, rag_image_size)
                     cur_sub_image.save(image_name)
                     new_node.path_name = image_name
                 
@@ -473,7 +479,7 @@ class BaseModel:
             open_set = open_set + expanded_nodes
         
         new_image = optimal_value['image']
-        new_image = self.map2image(new_image, image_patch_list, self.rag_image_size)
+        new_image = self.map2image(new_image, image_patch_list, rag_image_size)
         if self.debug:
             new_image.save('./tmp.png')
         for mess in message:

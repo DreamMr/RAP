@@ -48,6 +48,7 @@ def main():
     logger = get_logger('RUN')
 
     args = parse_args()
+    print(args.max_step)
     assert len(args.data), '--data should be a list of data files'
 
     if args.retry is not None:

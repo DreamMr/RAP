@@ -4,24 +4,27 @@
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "debug_eval",
             "type": "debugpy",
             "request": "launch",
-            "program": "/mnt/code/users/wangwenbin/LVLM/Evaluation/official/VLMEvalKit/run.py",
+            "program": "/mnt/code/users/wangwenbin/RAP/run.py",
             "console": "integratedTerminal",
             "justMyCode": false,
             "args": [
-                "--data", "MMBench_DEV_EN_V11",
-                "--model", "qwen_chat",
+                "--data", "HRBench4K",
+                "--model", "llava_onevision_qwen2_0.5b_ov",
                 "--judge", "chatgpt-0125",
-                "--model_path", "/mnt/data/users/zhangyuqi/huggingface/vlm_models/Qwen-VL-Chat",
-                "--no_rag"
+                "--model_path", "/mnt/data/users/wenbinwang/huggingface/llava-onevision-qwen2-0.5b-ov",
+                "--rag_model_path", "/mnt/data/users/wenbinwang/huggingface/VisRAG-Ret",
+                "--processed_image_path", "/mnt/data/users/wenbinwang/LVLM_results/llava_ov_ob5b_vrag_hrbench_benchmark_astar_rap_max_step_300/llava_onevision_qwen2_0.5b_ov/vstar/images"
             ],
             "env": {
                 "LMUData": "/mnt/data/users/wenbinwang/datasets/LVLM_Benchmark/LMUData",
                 "OPENAI_API_KEY": "sk-testmyllm",
-                "OPENAI_API_BASE": "http://0.0.0.0:23335/v1/chat/completions"
+                "OPENAI_API_BASE": "http://0.0.0.0:23335/v1/chat/completions",
+                "CUDA_VISIBLE_DEVICES": "3"
             }
         },
         {
