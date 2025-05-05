@@ -27,12 +27,6 @@ This repo contains the official code for the paper "<b><em>Retrieval-Augmented P
 
 **[2025.03.04]** We released the [ArXiv paper](https://arxiv.org/abs/2503.01222). 🚀
 
-## Contents
-
-- [Introduction](#👀-introduction)
-- [Installation](#⚙️-installation)
-- [Preparation](#📚-preparation)
-- [Evaluation](#🫵-evaluation)
 
 ## 👀 Introduction
 
