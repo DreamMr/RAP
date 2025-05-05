@@ -1,3 +1,3 @@
-from .llava import LLaVA, LLaVA_OneVision
+from .llava import LLaVA_OneVision
 
-__all__ = ['LLaVA', 'LLaVA_OneVision']
+__all__ = ['LLaVA_OneVision']

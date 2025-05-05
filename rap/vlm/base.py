@@ -122,9 +122,14 @@ class BaseModel:
         
         # initialize rag model
         self.rag_model_path = rag_model_path
-        self.rag_tokenizer = AutoTokenizer.from_pretrained(self.rag_model_path, trust_remote_code=True)
-        self.rag_model = AutoModel.from_pretrained(self.rag_model_path, torch_dtype=torch.bfloat16, trust_remote_code=True).cuda()
-        self.rag_model.eval()
+        try:
+            self.rag_tokenizer = AutoTokenizer.from_pretrained(self.rag_model_path, trust_remote_code=True)
+            self.rag_model = AutoModel.from_pretrained(self.rag_model_path, torch_dtype=torch.bfloat16, trust_remote_code=True).cuda()
+            self.rag_model.eval()
+        except Exception as e:
+            warnings.warn(f"RAG model cannot load from {rag_model_path}!!!")
+            self.rag_model = None
+            self.rag_tokenizer = None
         self.rag_image_size = 224
         self.debug=debug
         self.is_process_image = is_process_image
@@ -288,6 +293,7 @@ class BaseModel:
             assert item['type'] in self.allowed_types, f'Invalid input type: {item["type"]}'
             
         if not no_rag:
+            assert self.rag_tokenizer is not None and self.rag_model is not None, 'The rag model is None, so cannot use rag!!!'
             message = self.rag(message)
             if self.is_process_image:
                 return message

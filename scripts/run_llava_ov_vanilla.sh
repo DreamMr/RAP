@@ -12,14 +12,14 @@ RAG_MODEL_PATH=openbmb/VisRAG-Ret
 dataset=HRBench4K
 work_dir=./outputs/${MODEL_NAME}
 mkdir -p $work_dir
-torchrun --nproc-per-node=$GPU --master_port 29501 run.py --data $processed_dataset --model $MODEL_NAME --judge chatgpt-0125 --work-dir $work_dir --model_path $MODEL_PATH --no_rag
+torchrun --nproc-per-node=$GPU --master_port 29501 run.py --data $dataset --model $MODEL_NAME --judge chatgpt-0125 --work-dir $work_dir --model_path $MODEL_PATH --no_rag
 
 dataset=HRBench8K
 work_dir=./outputs/${MODEL_NAME}
 mkdir -p $work_dir
-torchrun --nproc-per-node=$GPU --master_port 29501 run.py --data $processed_dataset --model $MODEL_NAME --judge chatgpt-0125 --work-dir $work_dir --model_path $MODEL_PATH --no_rag
+torchrun --nproc-per-node=$GPU --master_port 29501 run.py --data $dataset --model $MODEL_NAME --judge chatgpt-0125 --work-dir $work_dir --model_path $MODEL_PATH --no_rag
 
 dataset=vstar
 work_dir=./outputs/${MODEL_NAME}
 mkdir -p $work_dir
-torchrun --nproc-per-node=$GPU --master_port 29501 run.py --data $processed_dataset --model $MODEL_NAME --judge chatgpt-0125 --work-dir $work_dir --model_path $MODEL_PATH --no_rag
+torchrun --nproc-per-node=$GPU --master_port 29501 run.py --data $dataset --model $MODEL_NAME --judge chatgpt-0125 --work-dir $work_dir --model_path $MODEL_PATH --no_rag
