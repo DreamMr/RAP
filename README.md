@@ -29,10 +29,10 @@ This repo contains the official code for the paper "<b><em>Retrieval-Augmented P
 
 ## Contents
 
-- [Introduction](#👀-introduction)
-- [Installation](#⚙️-installation)
-- [Preparation](#📚-preparation)
-- [Evaluation](#🫵-evaluation)
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Preparation](#preparation)
+- [Evaluation](#evaluation)
 
 ## 👀 Introduction
 
