@@ -1,5 +1,5 @@
 
-# <img src="./assets/img/logo.jpg" alt="logo" style="zoom:6%;" />Retrieval-Augmented Perception
+# <img src="./assets/img/logo.jpg" alt="logo" style="zoom:6%;" /><b><em>Retrieval-Augmented Perception</em></b>
 
 <div align="center">
 <a href="https://arxiv.org/abs/2503.01222" target="_blank">
