@@ -105,6 +105,17 @@ bash run_llava_ov_vanilla.sh
 
 - Wenbin Wang: wangwenbin97@whu.edu.cn 
 
+## ✒️ Citation
+If you use *RAP* in your research, please cite our work:
+```
+@article{rap,
+      title={Retrieval-Augmented Perception: High-Resolution Image Perception Meets Visual RAG}, 
+      author={Wenbin Wang and Yongcheng Jing and Liang Ding and Yingjie Wang and Li Shen and Yong Luo and Bo Du and Dacheng Tao},
+      year={2025},
+      journal={arXiv preprint},
+      url={https://arxiv.org/abs/2503.01222}, 
+}
+```
 
 ## Acknowledgement
 
