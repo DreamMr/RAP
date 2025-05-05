@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: rap
+Version: 0.1.0
+Summary: Retrieval-Augmented Perception
+Author: Haodong Duan
+Author-email: wangwenbin97@whu.edu.cn
+Maintainer: Wenbin Wang
+Maintainer-email: wangwenbin97@whu.edu.cn
+Keywords: AI,NLP,in-context learning
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Requires-Python: >=3.7.0
+Description-Content-Type: text/markdown
+Requires-Dist: gradio
+Requires-Dist: huggingface_hub
+Requires-Dist: matplotlib
+Requires-Dist: numpy>=1.23.4
+Requires-Dist: omegaconf
+Requires-Dist: openai==1.3.5
+Requires-Dist: opencv-python>=4.4.0.46
+Requires-Dist: openpyxl
+Requires-Dist: pandas
+Requires-Dist: pillow
+Requires-Dist: portalocker
+Requires-Dist: python-dotenv
+Requires-Dist: requests
+Requires-Dist: rich
+Requires-Dist: sentencepiece
+Requires-Dist: setuptools
+Requires-Dist: sty
+Requires-Dist: tabulate
+Requires-Dist: tiktoken
+Requires-Dist: timeout-decorator
+Requires-Dist: tqdm
+Requires-Dist: transformers
+Requires-Dist: typing_extensions==4.7.1
+Requires-Dist: validators
+Requires-Dist: xlsxwriter
+
+# <img src="./logo.jpg" alt="logo" style="zoom:6%;" />Retrieval-Augmented Perception
+
+[**📖 Paper**]()
+
+This repo contains the official code for the paper "***Retrieval-Augmented Perception: High-Resolution Image Perception Meets Visual RAG***"
+
+## 👀 Introduction
+
+High-resolution (HR) image perception remains a key challenge in multimodal large language models (MLLMs). To overcome the limitations of existing methods, this paper shifts away from prior dedicated heuristic approaches and revisits the most fundamental idea to HR perception by enhancing the long-context capability of MLLMs, driven by recent advances in long-context techniques like retrieval-augmented generation (RAG) for general LLMs.  Towards this end, this paper presents the first study exploring the use of RAG to address HR perception challenges. Specifically, we propose ***Retrieval-Augmented Perception (RAP)***, a training-free framework that retrieves and fuses relevant image crops while preserving spatial context using the proposed *Spatial-Awareness Layout*. To accommodate different tasks, the proposed *Retrieved-Exploration Search (RE-Search)* dynamically selects the optimal number of crops based on model confidence and retrieval scores. Experimental results on HR benchmarks demonstrate the significant effectiveness of ***RAP***, with LLaVA-v1.5-13B achieving a 43% improvement on $V^*$ **Bench** and 19% on ***HR-Bench***.
+
+![](./framework.png)
+
+## 🧑‍💻 Code
+
+Coming soon......
+```
+pip install -e .
+```
+
+## 📧 Contact
+
+- Wenbin Wang: wangwenbin97@whu.edu.cn 
