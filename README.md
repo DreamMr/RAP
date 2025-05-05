@@ -1,5 +1,5 @@
 
-# <img src="./assets/img/logo.jpg" alt="logo" style="vertical-align: -10px;" :height="25px" width="25px"/><b><em>Retrieval-Augmented Perception</em></b>
+# <img src="./assets/logo-Photoroom.png" alt="logo" style="vertical-align: -10px;" :height="40px" width="40px"/><b><em>Retrieval-Augmented Perception</em></b>
 
 <div align="center">
 <a href="https://arxiv.org/abs/2503.01222" target="_blank">
