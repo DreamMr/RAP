@@ -1,5 +1,5 @@
 
-# <img src="./assets/img/logo.jpg" alt="logo" style="zoom:6%;" /><b><em>Retrieval-Augmented Perception</em></b>
+# <img src="./assets/logo-Photoroom.png" alt="logo" style="vertical-align: -10px;" :height="40px" width="40px"/><b><em>Retrieval-Augmented Perception</em></b>
 
 <div align="center">
 <a href="https://arxiv.org/abs/2503.01222" target="_blank">
@@ -9,10 +9,7 @@
     <img alt="Website" src="https://img.shields.io/badge/🌎_Website-dreammr.github.io/RAP-blue.svg" height="25" />
 </a>
 
-<video poster="" id="tree" autoplay controls muted loop height="100%" style="width: 60%; height: auto; align-items: center;">
-            <!-- Your video here -->
-            <source src="./assets/video/project_dynamic.mp4" type="video/mp4">
-          </video>
+<img src="./assets/img/motivation.png" style="width: 80%; height: auto">
 
 This repo contains the official code for the paper "<b><em>Retrieval-Augmented Perception: High-Resolution Image Perception Meets Visual RAG</em></b>"
 
