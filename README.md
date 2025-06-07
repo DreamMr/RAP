@@ -21,9 +21,9 @@ This repo contains the official code for the paper "<b><em>Retrieval-Augmented P
 
 ## 📜 News
 
-**[2025.05.05]** ***RAP*** code is available!
+**[2025.06.07]** Our paper was accepted to ICML 2025 as an Oral paper (Top 1%)! 🎉
 
-**[2025.05.01]** Our paper was accepted as a Spotlight (Top 2.6%) at ICML 2025! 🎉
+**[2025.05.05]** ***RAP*** code is available!
 
 **[2025.03.04]** We released the [ArXiv paper](https://arxiv.org/abs/2503.01222). 🚀
 
