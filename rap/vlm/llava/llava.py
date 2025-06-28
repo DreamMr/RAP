@@ -7,6 +7,7 @@ from ..base import BaseModel
 from ...smp import *
 from ...dataset import DATASET_TYPE
 import copy
+import traceback
 
 
 
@@ -17,7 +18,7 @@ class LLaVA_OneVision(BaseModel):
     DEFAULT_IMAGE_TOKEN = '<image>'
     IMAGE_TOKEN_INDEX = -200
 
-    def __init__(self, model_path='lmms-lab/llava-onevision-qwen2-7b-si', debug=False,
+    def __init__(self, model_path='lmms-lab/llava-onevision-qwen2-0.5b-ov', debug=False,
                  is_process_image=False, processed_image_path=None,max_step=200, bias_value=0.2, rag_model_path='openbmb/VisRAG-Ret',**kwargs):
         assert model_path is not None
         try:
@@ -25,6 +26,7 @@ class LLaVA_OneVision(BaseModel):
             from llava.conversation import conv_templates
             from llava.mm_utils import get_model_name_from_path, process_images, tokenizer_image_token
         except ImportError:
+            traceback.print_exc()
             warnings.warn('Please `pip install git+https://github.com/LLaVA-VL/LLaVA-NeXT.git`')
         super().__init__(debug=debug, is_process_image=is_process_image, processed_image_path=processed_image_path,max_step=max_step, bias_value=bias_value, rag_model_path=rag_model_path)
         model_name = get_model_name_from_path(model_path)

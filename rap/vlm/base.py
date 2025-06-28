@@ -9,6 +9,7 @@ import numpy as np
 import math
 import time
 from copy import deepcopy
+import traceback
 
 ANSWER_PROMPT = "Question: {}\nCould you answer the question based on the available visual information? Answer Yes or No."
 
@@ -128,6 +129,7 @@ class BaseModel:
             self.rag_model.eval()
         except Exception as e:
             warnings.warn(f"RAG model cannot load from {rag_model_path}!!!")
+            traceback.print_exc()
             self.rag_model = None
             self.rag_tokenizer = None
         self.rag_image_size = 224

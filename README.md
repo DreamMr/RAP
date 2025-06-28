@@ -21,9 +21,11 @@ This repo contains the official code for the paper "<b><em>Retrieval-Augmented P
 
 ## 📜 News
 
-**[2025.05.05]** ***RAP*** code are available!
+**[2025.06.28]** We add a demo script `play.py` for inference on one image.
 
-**[2025.05.01]** Our paper was accepted as a Spotlight at ICML 2025! 🎉
+**[2025.06.07]** Our paper was accepted to ICML 2025 as an Oral paper (Top 1%)! 🎉
+
+**[2025.05.05]** ***RAP*** code is available!
 
 **[2025.03.04]** We released the [ArXiv paper](https://arxiv.org/abs/2503.01222). 🚀
 
@@ -90,6 +92,18 @@ bash run_llava_ov_vanilla.sh
 ```
 
 > Note: If an OOM (Out of Memory) error occurs during evaluation, please try reducing the number of `workers` (in `rap/inference.py` line 107) and the `max_batch_size` (in `rap/vlm/base.py` line 23).
+
+## Run the demo
+We offer a demo file for RAP that can process any given Image-Question pair.
+### w/o RAP
+```
+python play.py --model llava_onevision_qwen2_0.5b_ov --image_path ./demo.jpg --input "What's the color of the umbrella?"
+```
+
+### w/ RAP
+```
+python play.py --model llava_onevision_qwen2_0.5b_ov --image_path ./demo.jpg --use_rap --input "What's the color of the umbrella?"
+```
 
 ## 📧 Contact
 
