@@ -113,12 +113,11 @@ python play.py --model llava_onevision_qwen2_0.5b_ov --image_path ./demo.jpg --u
 ## ✒️ Citation
 If you use *RAP* in your research, please cite our work:
 ```
-@article{rap,
-      title={Retrieval-Augmented Perception: High-Resolution Image Perception Meets Visual RAG}, 
-      author={Wenbin Wang and Yongcheng Jing and Liang Ding and Yingjie Wang and Li Shen and Yong Luo and Bo Du and Dacheng Tao},
-      year={2025},
-      journal={arXiv preprint},
-      url={https://arxiv.org/abs/2503.01222}, 
+@inproceedings{wangretrieval,
+  title={Retrieval-Augmented Perception: High-resolution Image Perception Meets Visual RAG},
+  author={Wang, Wenbin and Jing, Yongcheng and Ding, Liang and Wang, Yingjie and Shen, Li and Luo, Yong and Du, Bo and Tao, Dacheng},
+  booktitle={Forty-second International Conference on Machine Learning},
+  url={https://arxiv.org/abs/2503.01222}
 }
 ```
 
