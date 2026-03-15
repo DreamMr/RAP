@@ -85,7 +85,7 @@ cd scripts
 bash run_llava_ov_hrbench.sh
 
 ## LLaVA-1.5-7B
-## Noted: For LLaVA-1.5-7B rag_image_size=112 and max_step=200, vstar: 91.6
+## Noted: For LLaVA-1.5-7B, with rag_image_size=112 and max_step=200, vstar=91.6 
 bash run_llava1d5_7b_rap.sh # HR-Bench 4K: 56.5, HR-Bench 8K: 53.6, vstar: 88.9
 
 ## LLaVA-1.5-13B
