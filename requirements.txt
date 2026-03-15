@@ -19,7 +19,11 @@ tabulate
 tiktoken
 timeout-decorator
 tqdm
-transformers
-typing_extensions==4.7.1
+transformers==4.46.3
+torch==2.8.0+cu128
+torchaudio==2.8.0+cu128
+torchvision==0.23.0+cu128
+typing_extensions==4.15.0
 validators
 xlsxwriter
+llava==1.7.0.dev0

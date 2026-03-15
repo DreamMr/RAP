@@ -127,6 +127,7 @@ class BaseModel:
             self.rag_tokenizer = AutoTokenizer.from_pretrained(self.rag_model_path, trust_remote_code=True)
             self.rag_model = AutoModel.from_pretrained(self.rag_model_path, torch_dtype=torch.bfloat16, trust_remote_code=True).cuda()
             self.rag_model.eval()
+            self.rag_model.config.use_cache = False # if use qwen3vl need to set use_cache = False
         except Exception as e:
             warnings.warn(f"RAG model cannot load from {rag_model_path}!!!")
             traceback.print_exc()

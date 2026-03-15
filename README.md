@@ -21,6 +21,8 @@ This repo contains the official code for the paper "<b><em>Retrieval-Augmented P
 
 ## 📜 News
 
+**[2026.03.15]** [LLaVA-1.5](https://huggingface.co/liuhaotian/llava-v1.5-7b) series and [Qwen3VL](https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct) series are supported in our code! Additionally, to address the previously reported issues regarding the [LLaVA](https://github.com/LLaVA-VL/LLaVA-NeXT?tab=readme-ov-file) and PyTorch versions, we have further specified and refined the version in the `requirements.txt`.
+
 **[2025.06.28]** We add a demo script `play.py` for inference on one image.
 
 **[2025.06.07]** Our paper was accepted to ICML 2025 as an Oral paper (Top 1%)! 🎉
@@ -55,7 +57,7 @@ pip install -e .
 
 ### 1. MLLM & RAG Model
 
-In this repo, we implement RAP with [LLaVA-OneVision (ov) series](https://huggingface.co/lmms-lab/llava-onevision-qwen2-0.5b-ov) and [VisRAG-Ret](https://huggingface.co/openbmb/VisRAG-Ret). You can either download these checkpoints manually beforehand or let them be fetched automatically when calling the from_pretrained method in transformers.
+In this repo, we implement RAP with [LLaVA-OneVision (ov) series](https://huggingface.co/lmms-lab/llava-onevision-qwen2-0.5b-ov), [LLaVA-1.5 series](https://huggingface.co/liuhaotian/llava-v1.5-7b) and [Qwen3VL series](https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct). You can either download these checkpoints manually beforehand or let them be fetched automatically when calling the from_pretrained method in transformers.
 
 ### 2. Evaluation data
 
@@ -65,34 +67,56 @@ export LMUData=YOUR_DATASET_PATH
 cp vstar.tsv $LMUData
 cp hr_bench_4k_single.tsv $LMUData
 cp hr_bench_8k_single.tsv $LMUData
+
+# Noted: need to modify the md5 in ./rap/dataset/image_mcq.py
+# We provide the code to calculate the md5 in ./rap/smp/file.py
+# example:
+# from rap.smp import md5
+# file_path = r'LMUData/vstar.tsv'
+# print(md5(file_path))
 ```
 
 ## 🫵 Evaluation
 
-### 1. Results of HR-Bench
+### 1. w/ Our ***RAP***
 ```bash
 cd scripts
+## LLaVA-OneVision
 bash run_llava_ov_hrbench.sh
+
+## LLaVA-1.5-7B
+bash run_llava1d5_7b_rap.sh # HR-Bench 4K: 56.5, HR-Bench 8K: 53.6, vstar: 88.9
+
+## LLaVA-1.5-13B
+bash run_llava1d5_13 # HR-Bench 4K: 61.9, HR-Bench 8K: 58.9, vstar: 90.2
+
+## Qwen3VL-8B-Instruct `pip install -U transformers==4.57.6`
+bash run_qwen3vl_8b_rap.sh # HR-Bench 4K: 76.9, HR-Bench 8K: 74.9, vstar: 92.0
 ```
 
 > Note: Since the official HR-Bench uses Cyclic Permutation, in order to improve evaluation efficiency, we adopt a two-stage approach: 1) First, for each image and query, we use RAP to obtain key image crops; 2) Then, we use the images obtained in 1) to replace the original images as input.
 
-### 2. Results of $V^*$ Bench
-```bash
-cd scripts
-bash run_llava_ov_vstar.sh
-```
 
-### 3. Results of Vanilla
+### 2. Results of Vanilla
 
 To enable better comparison, we also provide evaluation code without ***RAP***.
 
 ```bash
 cd scripts
+## LLaVA-OneVision-0.5B
 bash run_llava_ov_vanilla.sh
+
+## LLaVA-1.5-7B
+bash run_llava1d5_7b_vanilla.sh
+
+## LLaVA-1.5-13B
+bash run_llava1d5_13b_vanilla.sh
+
+## Qwen3Vl-8B-Instruct `pip install -U transformers==4.57.6`
+bash run_qwen3vl_8b_vanilla.sh # HR-Bench 4K: 71.5, HR-Bench 8K: 64.1, vstar: 81.3
 ```
 
-> Note: If an OOM (Out of Memory) error occurs during evaluation, please try reducing the number of `workers` (in `rap/inference.py` line 107) and the `max_batch_size` (in `rap/vlm/base.py` line 23).
+> Note: If an OOM (Out of Memory) error occurs during evaluation, please try reducing the number of `workers` (in `rap/inference.py` line 107) and the `max_batch_size` (in `rap/vlm/base.py` line 24).
 
 ## Run the demo
 We offer a demo file for RAP that can process any given Image-Question pair.
@@ -113,12 +137,11 @@ python play.py --model llava_onevision_qwen2_0.5b_ov --image_path ./demo.jpg --u
 ## ✒️ Citation
 If you use *RAP* in your research, please cite our work:
 ```
-@article{rap,
-      title={Retrieval-Augmented Perception: High-Resolution Image Perception Meets Visual RAG}, 
-      author={Wenbin Wang and Yongcheng Jing and Liang Ding and Yingjie Wang and Li Shen and Yong Luo and Bo Du and Dacheng Tao},
-      year={2025},
-      journal={arXiv preprint},
-      url={https://arxiv.org/abs/2503.01222}, 
+@inproceedings{wangretrieval,
+  title={Retrieval-Augmented Perception: High-resolution Image Perception Meets Visual RAG},
+  author={Wang, Wenbin and Jing, Yongcheng and Ding, Liang and Wang, Yingjie and Shen, Li and Luo, Yong and Du, Bo and Tao, Dacheng},
+  booktitle={Forty-second International Conference on Machine Learning},
+  url={https://arxiv.org/abs/2503.01222}
 }
 ```
 
