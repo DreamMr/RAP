@@ -68,7 +68,7 @@ cp vstar.tsv $LMUData
 cp hr_bench_4k_single.tsv $LMUData
 cp hr_bench_8k_single.tsv $LMUData
 
-# Noted: need to modify the md5 in ./rap/dataset/image_mcq.py
+# Note: need to modify the md5 in ./rap/dataset/image_mcq.py
 # We provide the code to calculate the md5 in ./rap/smp/file.py
 # example:
 # from rap.smp import md5
@@ -81,11 +81,11 @@ cp hr_bench_8k_single.tsv $LMUData
 ### 1. w/ Our ***RAP***
 ```bash
 cd scripts
-## LLaVA-OneVision
+## LLaVA-OneVision-0.5B
 bash run_llava_ov_hrbench.sh
 
 ## LLaVA-1.5-7B
-## Noted: For LLaVA-1.5-7B, with rag_image_size=112 and max_step=200, vstar=91.6 
+## Note: For LLaVA-1.5-7B, with rag_image_size=112 and max_step=200, vstar=91.6 
 bash run_llava1d5_7b_rap.sh # HR-Bench 4K: 56.5, HR-Bench 8K: 53.6, vstar: 88.9
 
 ## LLaVA-1.5-13B
