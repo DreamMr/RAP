@@ -50,6 +50,7 @@ cd RAP
 ```bash
 conda create -n RAP python=3.10 -y
 conda activate RAP
+pip install git+https://github.com/LLaVA-VL/LLaVA-NeXT.git # llava-1.7.0.dev0
 pip install -e .
 ```
 
