@@ -1,5 +1,4 @@
 #!/bin/bash
-source /home/wenbin/miniconda3/bin/activate rap_github
 #pip install -U transformers==4.57.6
 export LMUData=/home/dataset_model/dataset/LMURoot
 export CUDA_VISIBLE_DEVICES=4,5
