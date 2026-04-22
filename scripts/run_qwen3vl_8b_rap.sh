@@ -2,8 +2,7 @@
 #pip install -U transformers==4.57.6
 #Noted: Using Qwen3VL should update the transformers package.  `pip install -U transformers==4.57.6`
 export LMUData=YOUR_DATASET_PATH
-export CUDA_VISIBLE_DEVICES=4,5
-export GPU=2
+export GPU=$(nvidia-smi --list-gpus | wc -l)
 
 WORKSPACE=../
 cd $WORKSPACE
